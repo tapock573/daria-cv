@@ -122,7 +122,7 @@ const PORTFOLIO_I18N = {
         desc: 'Turning complexity into clear, intuitive experiences',
       },
       p3: {
-        title: 'V<span class="italic-glyph">is</span>ual<br class="br-1920"> design',
+        title: 'V<span class="italic-glyph">is</span>ual design',
         desc: 'Creating interfaces with a strong visual language',
       },
       p4: {

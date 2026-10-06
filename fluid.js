@@ -22,13 +22,13 @@
 
     // Master fixed WebGLRenderer for edge-to-edge multi-viewport rendering
     var renderer = new THREE.WebGLRenderer({
-      antialias: false,
+      antialias: true,
       alpha: true,
       preserveDrawingBuffer: true,
       powerPreference: 'high-performance'
     });
 
-    var maxDpr = isDesktop ? 1.5 : 1.0;
+    var maxDpr = isDesktop ? 2.0 : 1.25;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxDpr));
     renderer.setClearColor(0, 0);
     renderer.autoClear = false;
@@ -228,13 +228,23 @@
       'precision highp float;',
       'uniform sampler2D velocity;',
       'uniform sampler2D palette;',
+      'uniform vec2 px;',
       'varying vec2 uv;',
       'void main() {',
-      '  vec2 vel = texture2D(velocity, uv).xy;',
+      '  vec2 v0 = texture2D(velocity, uv).xy;',
+      '  vec2 v1 = texture2D(velocity, uv + vec2(px.x, 0.0)).xy;',
+      '  vec2 v2 = texture2D(velocity, uv - vec2(px.x, 0.0)).xy;',
+      '  vec2 v3 = texture2D(velocity, uv + vec2(0.0, px.y)).xy;',
+      '  vec2 v4 = texture2D(velocity, uv - vec2(0.0, px.y)).xy;',
+      '  vec2 v5 = texture2D(velocity, uv + px).xy;',
+      '  vec2 v6 = texture2D(velocity, uv - px).xy;',
+      '  vec2 v7 = texture2D(velocity, uv + vec2(px.x, -px.y)).xy;',
+      '  vec2 v8 = texture2D(velocity, uv + vec2(-px.x, px.y)).xy;',
+      '  vec2 vel = (v0 * 4.0 + (v1 + v2 + v3 + v4) * 2.0 + (v5 + v6 + v7 + v8)) * 0.0625;',
       '  float speed = length(vel);',
-      '  float lenv = clamp(speed * 1.6, 0.0, 1.0);',
+      '  float lenv = clamp(speed * 0.92, 0.0, 1.0);',
       '  vec3 c = texture2D(palette, vec2(lenv, 0.5)).rgb;',
-      '  float alpha = smoothstep(0.01, 0.45, lenv) * 0.72;',
+      '  float alpha = smoothstep(0.012, 0.50, lenv) * 0.48;',
       '  gl_FragColor = vec4(c, alpha);',
       '}'
     ].join('\n');
@@ -553,14 +563,14 @@
     // Navier-Stokes Eulerian Simulation
     function FluidSimulation(options) {
       this.options = Object.assign({
-        iterations_poisson: 14,
-        mouse_force: 45,
-        resolution: 0.65,
-        cursor_size: 130,
-        decay: 0.982,
+        iterations_poisson: 18,
+        mouse_force: 38,
+        resolution: 1.25,
+        cursor_size: 140,
+        decay: 0.962,
         isBounce: false,
         dt: 0.013,
-        BFECC: false
+        BFECC: true
       }, options);
       this.fbos = {};
       this.fboSize = new THREE.Vector2();
@@ -696,10 +706,10 @@
 
       // Seed a sweeping upward curve of flame along the right flank
       var seeds = [
-        { x: 0.44, y: -0.28, fx: -16.0, fy: 20.0, scale: 1.3 },
-        { x: 0.38, y: -0.05, fx: -10.0, fy: 22.0, scale: 1.2 },
-        { x: 0.32, y: 0.18, fx: 6.0, fy: 16.0, scale: 1.1 },
-        { x: 0.40, y: 0.38, fx: 12.0, fy: -8.0, scale: 1.0 }
+        { x: 0.44, y: -0.28, fx: -12.0, fy: 17.0, scale: 1.35 },
+        { x: 0.38, y: -0.05, fx: -8.0, fy: 18.0, scale: 1.25 },
+        { x: 0.32, y: 0.18, fx: 6.0, fy: 14.0, scale: 1.15 },
+        { x: 0.40, y: 0.38, fx: 9.0, fy: -7.0, scale: 1.05 }
       ];
 
       for (var s = 0; s < seeds.length; s++) {
@@ -788,6 +798,7 @@
         uniforms: {
           velocity: { value: sim.fbos.vel_0.texture },
           boundarySpace: { value: new THREE.Vector2() },
+          px: { value: sim.cellScale },
           palette: { value: paletteTex },
           bgColor: { value: bgColor }
         }
@@ -810,18 +821,18 @@
         targetSelector: '',
         colors: ['#420700', '#aa1801', '#fa4e00', '#ffa400', '#ffd43f'],
         bgColor: new THREE.Vector4(7 / 255, 3 / 255, 2 / 255, 0.0),
-        mouseForce: 45,
-        cursorSize: 130,
-        decay: 0.982,
-        iterationsPoisson: 14,
+        mouseForce: 38,
+        cursorSize: 140,
+        decay: 0.962,
+        iterationsPoisson: 18,
         dt: 0.013,
-        BFECC: false,
-        resolution: 0.65,
+        BFECC: true,
+        resolution: 1.25,
         isBounce: false,
         idleFreeze: false,
         autoDemo: true,
-        autoSpeed: 0.16,
-        autoIntensity: 1.2,
+        autoSpeed: 0.15,
+        autoIntensity: 0.85,
         autoResumeDelay: 1000,
         autoRampDuration: 0.6
       }, options);
@@ -926,11 +937,13 @@
     // Initialize Hero & Footer Fluid Surfaces
     var isMobile = window.matchMedia('(max-width: 991px)').matches;
     var mobileOverrides = isMobile ? {
-      resolution: 0.45,
-      iterationsPoisson: 8,
-      cursorSize: 55,
-      mouseForce: 45,
-      autoSpeed: 0.10
+      resolution: 0.85,
+      iterationsPoisson: 12,
+      cursorSize: 75,
+      mouseForce: 34,
+      autoSpeed: 0.10,
+      decay: 0.962,
+      BFECC: true
     } : {};
 
     createLiquidInstance(Object.assign({
