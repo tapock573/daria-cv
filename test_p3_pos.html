@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<iframe id="f" src="index.html?lang=en" style="width: 1920px; height: 5000px;"></iframe>
+<pre id="out"></pre>
+<script>
+window.onload = function() {
+  setTimeout(function() {
+    const f = document.getElementById('f');
+    const doc = f.contentDocument;
+    const res = titles.map((t, i) => {
+      const rect = t.getBoundingClientRect();
+      return 'Project ' + (i+1) + ': ' + t.innerHTML.replace(/\s+/g, ' ') + ' | height=' + t.offsetHeight + ' | top=' + Math.round(rect.top);
+    });
+    document.getElementById('out').textContent = res.join('\n');
+  }, 1000);
+};
+</script>
+</body>
+</html>

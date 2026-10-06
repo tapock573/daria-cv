@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daria Nekrasova — Портфолио</title>
+  
+  <!-- Подключение оригинальных шрифтов из Figma: Source Serif 4 и Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== ШАПКА / HEADER ==================== -->
+  <header class="site-header">
+    <a href="#" class="site-logo">Daria Nekrasova</a>
+
+    <div class="header-right">
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li>
+            <a href="#work" class="nav-link active">
+              <span class="nav-link-track">
+                <span class="nav-link-text">WORK</span>
+                <span class="nav-link-text" aria-hidden="true">WORK</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link">
+              <span class="nav-link-track">
+                <span class="nav-link-text">ABOUT</span>
+                <span class="nav-link-text" aria-hidden="true">ABOUT</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#notes" class="nav-link">
+              <span class="nav-link-track">
+                <span class="nav-link-text">NOTES</span>
+                <span class="nav-link-text" aria-hidden="true">NOTES</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#contacts" class="nav-link">
+              <span class="nav-link-track">
+                <span class="nav-link-text">CONTACTS</span>
+                <span class="nav-link-text" aria-hidden="true">CONTACTS</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button type="button" class="lang-switcher" aria-label="Сменить язык">
+        <span class="nav-link-track">
+          <span class="nav-link-text">RU</span>
+          <span class="nav-link-text" aria-hidden="true">RU</span>
+        </span>
+        <span class="chevron">›</span>
+      </button>
+
+      <!-- Мобильная кнопка меню 2x2 grid (из Figma 360) -->
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Открыть навигацию" aria-expanded="false">
+        <span class="grid-icon" aria-hidden="true">
+          <span></span><span></span>
+          <span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== МОБИЛЬНОЕ МЕНЮ / DRAWER ==================== -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <a href="#" class="site-logo">Daria Nekrasova</a>
+      <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Закрыть меню">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <ul class="mobile-nav-list">
+        <li><a href="#work" class="mobile-nav-link">WORK</a></li>
+        <li><a href="#about" class="mobile-nav-link">ABOUT</a></li>
+        <li><a href="#notes" class="mobile-nav-link">NOTES</a></li>
+        <li><a href="#contacts" class="mobile-nav-link">CONTACTS</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+  <!-- ==================== ОСНОВНОЙ КОНТЕНТ ==================== -->
+  <main>
+
+    <!-- 1. ГЛАВНЫЙ ЭКРАН / HERO -->
+    <section class="hero-section" id="hero">
+      <!-- WebGL Molten Amber Liquid Container -->
+      <div id="hero-fluid" class="fluid-canvas-bg"></div>
+
+      <div class="hero-inner">
+        
+        <h1 class="hero-title">
+          Созда<span class="italic-glyph">ю</span><br class="br-mobile"> цифров<span class="italic-glyph">ы</span>е<br>
+          продукт<span class="italic-glyph">ы</span> со<br class="br-mobile"> см<span class="italic-glyph">ы</span>слом.
+        </h1>
+
+        <div class="hero-footer-row">
+          <p class="hero-description">
+            Сочетаю UX, визуальный дизайн<br>
+            и бизнес-мышление, создавая продукты,<br>
+            которые работают.
+          </p>
+
+          <a href="#work" class="btn-primary">
+            <span class="btn-label">Смотреть проекты</span>
+            <span class="btn-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. СЕКЦИЯ ПРОЕКТОВ / PROJECTS -->
+    <section class="projects-section" id="work">
+      <div class="container">
+
+        <!-- Проект 01: Стратегия (Metafora Branding) -->
+        <article class="project-row">
+          <div class="project-info">
+            <div class="project-text-group">
+              <span class="section-tag">[ ПРОЕКТЫ ]</span>
+              <h2 class="project-title">Страт<span class="italic-glyph">е</span>ги<span class="italic-glyph">я</span></h2>
+              <p class="project-desc">Понимаю задачу, потребности пользователей и цели бизнеса</p>
+            </div>
+            
+            <div class="client-badge">
+              <img src="assets/client-metafora.png" alt="Metafora Branding Logo" class="client-logo">
+              <div class="client-text">
+                <span class="client-caption">КЛИЕНТ</span>
+                <span class="client-name">Metafora Branding</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <img src="assets/mockup-1.png" alt="Кейс Metafora Branding" class="mockup-img" loading="lazy">
+            <div class="project-pagination" aria-hidden="true">
+              <span class="pagination-dot is-active"></span>
+              <span class="pagination-dot"></span>
+              <span class="pagination-dot"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Проект 02: UX (Stas Tretyak) -->
+        <article class="project-row">
+          <div class="project-info">
+            <div class="project-text-group">
+              <span class="section-tag">[ ПРОЕКТЫ ]</span>
+              <h2 class="project-title">U<span class="italic-glyph">X</span></h2>
+              <p class="project-desc">Превращаю сложные сценарии в понятный и удобный пользовательский опыт</p>
+            </div>
+            
+            <div class="client-badge">
+              <img src="assets/client-stas.png" alt="Stas Tretyak Logo" class="client-logo">
+              <div class="client-text">
+                <span class="client-caption">КЛИЕНТ</span>
+                <span class="client-name">Stas Tretyak</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <img src="assets/mockup-2.png" alt="Кейс Stas Tretyak" class="mockup-img" loading="lazy">
+            <div class="project-pagination" aria-hidden="true">
+              <span class="pagination-dot is-active"></span>
+              <span class="pagination-dot"></span>
+              <span class="pagination-dot"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Проект 03: Визуал (Lab Views) -->
+        <article class="project-row">
+          <div class="project-info">
+            <div class="project-text-group">
+              <span class="section-tag">[ ПРОЕКТЫ ]</span>
+              <h2 class="project-title">Виз<span class="italic-glyph">уа</span>л</h2>
+              <p class="project-desc">Создаю интерфейсы с выразительным и цельным визуальным языком</p>
+            </div>
+            
+            <div class="client-badge">
+              <img src="assets/client-labviews.png" alt="Lab Views Logo" class="client-logo">
+              <div class="client-text">
+                <span class="client-caption">КЛИЕНТ</span>
+                <span class="client-name">Lab Views</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <img src="assets/mockup-3.png" alt="Кейс Lab Views" class="mockup-img" loading="lazy">
+            <div class="project-pagination" aria-hidden="true">
+              <span class="pagination-dot is-active"></span>
+              <span class="pagination-dot"></span>
+              <span class="pagination-dot"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Проект 04: AI и креатив (Dungeon Master) -->
+        <article class="project-row">
+          <div class="project-info">
+            <div class="project-text-group">
+              <span class="section-tag">[ ПРОЕКТЫ ]</span>
+              <h2 class="project-title">AI и креат<span class="italic-glyph">и</span>в</h2>
+              <p class="project-desc">Использую AI, чтобы расширять возможности дизайна и ускорять творческий процесс</p>
+            </div>
+            
+            <div class="client-badge">
+              <img src="assets/client-dungeon.png" alt="Dungeon Master Logo" class="client-logo">
+              <div class="client-text">
+                <span class="client-caption">КЛИЕНТ</span>
+                <span class="client-name">Dungeon Master</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <img src="assets/mockup-4.png" alt="Кейс Dungeon Master" class="mockup-img" loading="lazy">
+            <div class="project-pagination" aria-hidden="true">
+              <span class="pagination-dot is-active"></span>
+              <span class="pagination-dot"></span>
+              <span class="pagination-dot"></span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3. СЕКЦИЯ «ЧЕМ Я ЗАНИМАЮСЬ» / ABOUT & SERVICES -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <!-- Заголовок и манифест -->
+        <div class="about-intro-grid">
+          <h2 class="about-title">Чем я занимаюсь</h2>
+          <p class="about-manifesto">
+            Мне интересна точка пересечения функции и выразительности: понять, что нужно бизнесу и людям, найти правильное продуктовое решение и придать ему характерный визуальный образ. Работаю на стыке UX, продуктового и веб-дизайна, визуального направления и креативных экспериментов.
+          </p>
+        </div>
+      </div>
+
+      <!-- Услуги с номерами (разделительные линии на всю ширину экрана) -->
+      <div class="services-list">
+
+        <!-- 01 Продукт и UX -->
+        <div class="service-block">
+          <div class="container">
+            <div class="service-header-row">
+              <span class="service-num">01</span>
+              <h3 class="service-title">Продукт и UX</h3>
+            </div>
+          </div>
+          <ul class="service-items">
+            <li>
+              <div class="container">
+                <span class="service-item-name">ПРОДУКТОВОЕ ИССЛЕДОВАНИЕ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ПРОДУКТОВОЕ ИССЛЕДОВАНИЕ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ВАЙРФРЕЙМЫ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ИНТЕРАКТИВНЫЕ ПРОТОТИПЫ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">UX-АНАЛИЗ</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 02 Дизайн интерфейсов -->
+        <div class="service-block">
+          <div class="container">
+            <div class="service-header-row">
+              <span class="service-num">02</span>
+              <h3 class="service-title">Диза<span class="italic-glyph">й</span>н интерфейсов</h3>
+            </div>
+          </div>
+          <ul class="service-items">
+            <li>
+              <div class="container">
+                <span class="service-item-name">ПРОДУКТ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ВЕБ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">АДАПТИВНЫЙ ДИЗАЙН</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ИНТЕРАКТИВНЫЕ СЦЕНАРИИ</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03 Визуальное направление -->
+        <div class="service-block">
+          <div class="container">
+            <div class="service-header-row">
+              <span class="service-num">03</span>
+              <h3 class="service-title">Визу<span class="italic-glyph">а</span>льное направление</h3>
+            </div>
+          </div>
+          <ul class="service-items">
+            <li>
+              <div class="container">
+                <span class="service-item-name">АРТ-ДИРЕКШН</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ВИЗУАЛЬНЫЕ КОНЦЕПЦИИ</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">ГРАФИЧЕСКИЙ ДИЗАЙН</span>
+              </div>
+            </li>
+            <li>
+              <div class="container">
+                <span class="service-item-name">AI ДИЗАЙН</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. СЕКЦИЯ «ЗАМЕТКИ О ДИЗАЙНЕ» / NOTES -->
+    <section class="notes-section" id="notes">
+      <div class="container">
+        <h2 class="notes-heading">Заметки о дизайне</h2>
+
+        <div class="notes-table">
+
+          <!-- Заметка 1 -->
+          <a href="#" class="note-entry">
+            <div class="note-thumb-wrap">
+              <img src="assets/note-1.png" alt="Обложка заметки" class="note-thumb">
+            </div>
+            <div class="note-info">
+              <h3 class="note-entry-title">Что делает лендинг эффективным</h3>
+              <span class="note-date">1 СЕНТЯБРЯ, 2026</span>
+            </div>
+            <span class="note-btn-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- Заметка 2 -->
+          <a href="#" class="note-entry">
+            <div class="note-thumb-wrap">
+              <img src="assets/note-2.png" alt="Обложка заметки" class="note-thumb">
+            </div>
+            <div class="note-info">
+              <h3 class="note-entry-title">Beautiful interface can still be a bad interface</h3>
+              <span class="note-date">13 АВГУСТА, 2026</span>
+            </div>
+            <span class="note-btn-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <!-- Заметка 3 -->
+          <a href="#" class="note-entry">
+            <div class="note-thumb-wrap">
+              <img src="assets/note-3.png" alt="Обложка заметки" class="note-thumb">
+            </div>
+            <div class="note-info">
+              <h3 class="note-entry-title">Когда визуальный дизайн становится частью UX</h3>
+              <span class="note-date">24 АВГУСТА, 2026</span>
+            </div>
+            <span class="note-btn-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== ПОДВАЛ / FOOTER ==================== -->
+  <footer class="site-footer" id="contacts">
+    <div id="footer-fluid" class="fluid-canvas-bg"></div>
+    <div class="container footer-container">
+      
+      <div class="footer-left">
+        <h2 class="footer-heading">Сд<span class="italic-glyph">е</span>лаем что-то<br class="br-mobile"> стоящее?</h2>
+        
+        <p class="footer-desc">
+          От первой идеи до проработанного интерфейса —<br>
+          проектирую цифровые продукты с ясной<br>
+          логикой, понятной целью и вниманием к деталям.
+        </p>
+
+        <div class="footer-contacts">
+          <div class="contact-group">
+            <span class="contact-label">Email</span>
+            <a href="mailto:darianekrasova.design@gmail.com" class="contact-link">darianekrasova.design@gmail.com</a>
+          </div>
+
+          <div class="contact-group">
+            <span class="contact-label">Telegram</span>
+            <a href="https://t.me/darioNekrasova" target="_blank" rel="noopener noreferrer" class="contact-link">@darioNekrasova</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <span class="copyright">© 2026</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Three.js (Offline) & LiquidEther Fluid Simulation Engine -->
+  <script src="assets/three.min.js"></script>
+  <script src="fluid.js"></script>
+
+  <!-- Smart Hide / Reveal Header on Scroll -->
+  <script>
+    (function() {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+
+      let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      let ticking = false;
+
+      // Active section tracking (ScrollSpy) for Menu Button ACTIVE dot
+      const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+      const sectionTargets = navLinks.map(link => {
+        const id = link.getAttribute('href');
+        return { link, el: document.querySelector(id) };
+      }).filter(item => item.el !== null);
+
+      function updateActiveNav() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const windowH = window.innerHeight;
+        const bodyH = document.documentElement.scrollHeight;
+        
+        // If reached bottom of page, highlight Contacts
+        if (scrollY + windowH >= bodyH - 60) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const last = navLinks[navLinks.length - 1];
+          if (last) last.classList.add('active');
+          return;
+        }
+
+        const checkPos = scrollY + 240;
+        let matched = null;
+
+        for (let i = sectionTargets.length - 1; i >= 0; i--) {
+          const { link, el } = sectionTargets[i];
+          const top = el.offsetTop;
+          if (checkPos >= top) {
+            matched = link;
+            break;
+          }
+        }
+
+        if (!matched && navLinks.length > 0) {
+          matched = navLinks[0];
+        }
+
+        if (matched) {
+          navLinks.forEach(l => {
+            if (l === matched) l.classList.add('active');
+            else l.classList.remove('active');
+          });
+        }
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Subtle blur & background when scrolled down past top hero
+            if (currentScrollY > 60) {
+              header.classList.add('header--scrolled');
+            } else {
+              header.classList.remove('header--scrolled');
+            }
+
+            // Hide on scroll down, reveal on scroll up with jitter tolerance
+            const delta = currentScrollY - lastScrollY;
+            if (Math.abs(delta) > 4) {
+              if (delta > 0 && currentScrollY > 100) {
+                // Scrolling down
+                header.classList.add('header--hidden');
+              } else if (delta < 0) {
+                // Scrolling up
+                header.classList.remove('header--hidden');
+              }
+              lastScrollY = Math.max(0, currentScrollY);
+            }
+
+            updateActiveNav();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      // Run on initial load
+      updateActiveNav();
+    })();
+  </script>
+
+  <!-- Running Marquee on Skill Rows (Figma Skill_card specification) -->
+  <script>
+    (function initSkillMarquees() {
+      const starSvg = '<svg class="marquee-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g transform="translate(12,12)"><path d="M0,0 C-1,-3 -2.8,-6 -2.8,-8.2 C-2.8,-10.2 -1.6,-11.5 0,-11.5 C1.6,-11.5 2.8,-10.2 2.8,-8.2 C2.8,-6 1,-3 0,0 Z"/><path d="M0,0 C-1,-3 -2.8,-6 -2.8,-8.2 C-2.8,-10.2 -1.6,-11.5 0,-11.5 C1.6,-11.5 2.8,-10.2 2.8,-8.2 C2.8,-6 1,-3 0,0 Z" transform="rotate(60)"/><path d="M0,0 C-1,-3 -2.8,-6 -2.8,-8.2 C-2.8,-10.2 -1.6,-11.5 0,-11.5 C1.6,-11.5 2.8,-10.2 2.8,-8.2 C2.8,-6 1,-3 0,0 Z" transform="rotate(120)"/><path d="M0,0 C-1,-3 -2.8,-6 -2.8,-8.2 C-2.8,-10.2 -1.6,-11.5 0,-11.5 C1.6,-11.5 2.8,-10.2 2.8,-8.2 C2.8,-6 1,-3 0,0 Z" transform="rotate(180)"/><path d="M0,0 C-1,-3 -2.8,-6 -2.8,-8.2 C-2.8,-10.2 -1.6,-11.5 0,-11.5 C1.6,-11.5 2.8,-10.2 2.8,-8.2 C2.8,-6 1,-3 0,0 Z" transform="rotate(240)"/><path d="M0,0 C-1,-3 -2.8,-6 -2.8,-8.2 C-2.8,-10.2 -1.6,-11.5 0,-11.5 C1.6,-11.5 2.8,-10.2 2.8,-8.2 C2.8,-6 1,-3 0,0 Z" transform="rotate(300)"/></g></svg>';
+
+      const rows = document.querySelectorAll('.service-items li');
+      rows.forEach(li => {
+        if (li.querySelector('.service-marquee')) return;
+        const nameEl = li.querySelector('.service-item-name');
+        if (!nameEl) return;
+        const name = nameEl.textContent.trim();
+
+        const marquee = document.createElement('div');
+        marquee.className = 'service-marquee';
+        marquee.setAttribute('aria-hidden', 'true');
+
+        const track = document.createElement('div');
+        track.className = 'service-marquee-track';
+
+        const unit = `<span class="marquee-text">${name}</span>${starSvg}`;
+        const repeatCount = Math.max(6, Math.ceil(3600 / (name.length * 20 + 80)));
+        const halfHtml = unit.repeat(repeatCount);
+        track.innerHTML = halfHtml + halfHtml;
+
+        marquee.appendChild(track);
+        li.appendChild(marquee);
+      });
+    })();
+  </script>
+
+  <!-- Mobile Menu Logic -->
+  <script>
+    (function initMobileMenu() {
+      const toggle = document.getElementById('mobileMenuToggle');
+      const drawer = document.getElementById('mobileDrawer');
+      const closeBtn = document.getElementById('mobileDrawerClose');
+      const backdrop = document.getElementById('mobileBackdrop');
+      if (!toggle || !drawer) return;
+
+      function openMenu() {
+        drawer.classList.add('is-open');
+        if (backdrop) backdrop.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        drawer.classList.remove('is-open');
+        if (backdrop) backdrop.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function() {
+        if (drawer.classList.contains('is-open')) closeMenu();
+        else openMenu();
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+      drawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
+<script>
+window.addEventListener("load", () => {
+  const h = document.querySelector(".site-header").getBoundingClientRect();
+  const l = document.querySelector(".site-logo").getBoundingClientRect();
+  const r = document.querySelector(".header-right").getBoundingClientRect();
+  const toggle = document.querySelector(".mobile-menu-toggle").getBoundingClientRect();
+  const lang = document.querySelector(".lang-switcher").getBoundingClientRect();
+  console.log("HEADER_DEBUG: header:" + JSON.stringify(h) + " logo:" + JSON.stringify(l) + " right:" + JSON.stringify(r) + " toggle:" + JSON.stringify(toggle) + " lang:" + JSON.stringify(lang));
+});
+</script></body>
+</html>
+
