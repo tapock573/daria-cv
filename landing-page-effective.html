@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Что делает лендинг эффективным — Daria Nekrasova</title>
+  
+  <!-- Подключение оригинальных шрифтов из Figma: Source Serif 4 и Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page-title="articleLanding.metaTitle">
+
+  <!-- ==================== ШАПКА / HEADER ==================== -->
+  <header class="site-header">
+    <a href="index.html" class="site-logo">Daria Nekrasova</a>
+
+    <div class="header-right">
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li>
+            <a href="index.html#work" class="nav-link">
+              <span class="nav-link-track">
+                <span class="nav-link-text">WORK</span>
+                <span class="nav-link-text" aria-hidden="true">WORK</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#about" class="nav-link">
+              <span class="nav-link-track">
+                <span class="nav-link-text">ABOUT</span>
+                <span class="nav-link-text" aria-hidden="true">ABOUT</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#notes" class="nav-link active">
+              <span class="nav-link-track">
+                <span class="nav-link-text">NOTES</span>
+                <span class="nav-link-text" aria-hidden="true">NOTES</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#contacts" class="nav-link">
+              <span class="nav-link-track">
+                <span class="nav-link-text">CONTACTS</span>
+                <span class="nav-link-text" aria-hidden="true">CONTACTS</span>
+              </span>
+              <span class="nav-link-dot" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button type="button" class="lang-switcher" aria-label="Сменить язык">
+        <span class="nav-link-track">
+          <span class="nav-link-text lang-text">EN</span>
+          <span class="nav-link-text lang-text" aria-hidden="true">EN</span>
+        </span>
+        <span class="chevron">›</span>
+      </button>
+
+      <!-- Мобильная кнопка меню 2x2 grid (из Figma 360) -->
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Открыть навигацию" aria-expanded="false">
+        <span class="grid-icon" aria-hidden="true">
+          <span></span><span></span>
+          <span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== МОБИЛЬНОЕ МЕНЮ (ПО FIGMA 360) ==================== -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <nav class="mobile-drawer-nav">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a href="index.html#work" class="mobile-nav-link" data-i18n="mobileMenu.work">Проекты</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="index.html#about" class="mobile-nav-link" data-i18n="mobileMenu.about">Обо мне</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="index.html#notes" class="mobile-nav-link" data-i18n="mobileMenu.notes">Заметки</a>
+          </li>
+          <li class="mobile-nav-item">
+            <a href="#contacts" class="mobile-nav-link" data-i18n="mobileMenu.contacts">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="mobile-drawer-contacts">
+        <div class="mobile-contact-group">
+          <span class="mobile-contact-label">Email</span>
+          <a href="mailto:darianekrasova.design@gmail.com" class="mobile-contact-link">darianekrasova.design@gmail.com</a>
+        </div>
+        <div class="mobile-contact-group">
+          <span class="mobile-contact-label">Telegram</span>
+          <a href="https://t.me/darioNekrasova" target="_blank" rel="noopener noreferrer" class="mobile-contact-link">@darioNekrasova</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+  <!-- ==================== ГЛАВНЫЙ ЭКРАН СТАТЬИ / ARTICLE HERO ==================== -->
+  <section class="article-hero" id="article-hero">
+    <!-- WebGL Molten Amber Liquid Container -->
+    <div id="hero-fluid" class="fluid-canvas-bg"></div>
+
+    <div class="article-hero-inner">
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <span class="article-meta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </span>
+          <span data-i18n="articleLanding.time">11 МИНУТ</span>
+        </div>
+
+        <div class="article-meta-item">
+          <span class="article-meta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </span>
+          <span data-i18n="articleLanding.date">1 СЕНТЯБРЯ, 2026</span>
+        </div>
+      </div>
+
+      <h1 class="article-title" data-i18n-html="articleLanding.title">Что делает<br class="br-mobile"> л<span class="italic-glyph">е</span>ндинг<br>эффект<span class="italic-glyph">и</span>вным</h1>
+
+      <p class="article-intro" data-i18n-html="articleLanding.intro">Сильный оффер, заметная кнопка, отзывы, короткая<br class="br-desktop"> форма. Этот чек-лист знают все — и всё равно по нему<br class="br-desktop"> легко собрать аккуратный экран, который не работает.</p>
+    </div>
+  </section>
+
+  <!-- ==================== ОСНОВНОЙ КОНТЕНТ СТАТЬИ ==================== -->
+  <main class="article-main">
+    <div class="article-container">
+      <div class="article-layout">
+
+        <!-- Боковое меню / Table of Contents (Sticky on Desktop) -->
+        <aside class="article-sidebar" aria-label="Содержание статьи">
+          <nav class="toc-nav">
+            <ul class="toc-list">
+              <li class="toc-item">
+                <a href="#sec-before-first-screen" class="toc-link is-active" data-i18n="articleLanding.toc.s1">Всё начинается до первого экрана</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-first-screen-offer" class="toc-link" data-i18n="articleLanding.toc.s2">Первый экран должен быстро дать оффер</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-hierarchy" class="toc-link" data-i18n="articleLanding.toc.s3">Иерархия важнее количества информации</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-copy-role" class="toc-link" data-i18n="articleLanding.toc.s4">Роль текста</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-trust" class="toc-link" data-i18n="articleLanding.toc.s5">Как создаётся доверие</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-lead-user" class="toc-link" data-i18n="articleLanding.toc.s6">Куда вы ведёте пользователя</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-screen-changes" class="toc-link" data-i18n="articleLanding.toc.s7">Что меняется вместе с экраном</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-speed" class="toc-link" data-i18n="articleLanding.toc.s8">Скорость — часть пользовательского опыта</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-beauty-vs-effective" class="toc-link" data-i18n="articleLanding.toc.s9">Красивый ≠ эффективный</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sec-data-after-launch" class="toc-link" data-i18n="articleLanding.toc.s10">После запуска смотрим на данные</a>
+              </li>
+              <li class="toc-item">
+                <a href="#sources" class="toc-link" data-i18n="articleLanding.toc.sources">Источники</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Текст статьи -->
+        <article class="article-content">
+
+          <!-- Раздел 1 -->
+          <section class="article-section" id="sec-before-first-screen">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s1.title">Всё начинается до первого экрана</h2>
+            <p data-i18n="articleLanding.s1.p1">Пользователь почти никогда не видит лендинг в вакууме. До него уже была реклама, письмо, пост, рекомендация или поисковый запрос. Всё это формирует ожидание.</p>
+            <p data-i18n="articleLanding.s1.p2">Если в объявлении человек увидел «бесплатный пробный урок», а на первом экране ему предлагают просто «открыть новые возможности вместе с нами», странице приходится заново объяснять, куда он попал и есть ли здесь то, что ему обещали. Даже красивый дизайн не компенсирует этот разрыв.</p>
+            <p data-i18n="articleLanding.s1.p3">Google прямо включает соответствие страницы объявлению и ключевым словам в рекомендации по оптимизации лендингов: пользователь должен сразу найти то, чего ожидал после клика. Похожую закономерность показывает и отчёт Unbounce, основанный на 41 тысяче лендингов, 464 миллионах посещений и 57 миллионах конверсий: источник трафика заметно связан с конверсией, а сообщение на странице должно продолжать сообщение в рекламе.</p>
+            <p data-i18n="articleLanding.s1.p4">То есть работа над лендингом начинается не с композиции и даже не с текста. Сначала нужно понять:</p>
+            <ul class="article-list">
+              <li data-i18n="articleLanding.s1.li1">откуда придёт человек;</li>
+              <li data-i18n="articleLanding.s1.li2">что он уже знает о продукте;</li>
+              <li data-i18n="articleLanding.s1.li3">что ему пообещали до перехода;</li>
+              <li data-i18n="articleLanding.s1.li4">какое одно действие мы хотим получить от него на этом этапе.</li>
+            </ul>
+            <p data-i18n="articleLanding.s1.p5">Один и тот же продукт может требовать разных лендингов для тёплой аудитории из рассылки и для человека, который впервые увидел рекламу. У них разный контекст, разный уровень доверия и разные вопросы. Универсальная страница в таком случае часто оказывается одинаково неточной для всех.</p>
+          </section>
+
+          <!-- Раздел 2 -->
+          <section class="article-section" id="sec-first-screen-offer">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s2.title">Первый экран должен быстро дать оффер</h2>
+            <p data-i18n="articleLanding.s2.p1">Первый экран не должен рассказывать о продукте всё. Его задача проще: за первые секунды человек должен понять, куда он попал, что ему предлагают и есть ли здесь то, что он искал.</p>
+            <p data-i18n="articleLanding.s2.p2">При этом первый экран совсем не обязан выглядеть как стандартная связка из заголовка, подзаголовка и кнопки. Он может быть эмоциональным, необычным или почти полностью построенным на визуале. Но даже в таком случае должно быть понятно, что именно здесь предлагают и что можно сделать дальше.</p>
+            <p data-i18n="articleLanding.s2.p3">Это особенно важно потому, что первое впечатление возникает очень быстро. В исследовании Гитте Линдгаард и её коллег участники оценивали визуальную привлекательность сайтов уже через 50 миллисекунд. Это не значит, что за такое время человек успевает разобраться в продукте или решить, будет ли его покупать. Но визуал действительно начинает влиять на восприятие страницы ещё до того, как пользователь успевает прочитать текст.</p>
+            <p data-i18n="articleLanding.s2.p4">При этом одного визуала недостаточно. Пользователь должен понимать, что его ждёт дальше. В Nielsen Norman Group это описывается через понятие information scent — сигналы, по которым человек оценивает, насколько вероятно найти на странице нужную информацию. Если на первом экране есть только крупная картинка и абстрактный слоган, но непонятно, что именно предлагает компания, у пользователя может не быть причины продолжать просмотр.</p>
+            <p data-i18n="articleLanding.s2.p5">Поэтому хороший первый экран не обязательно должен быть максимально информативным. Он должен дать достаточно информации, чтобы человек понял предложение и захотел узнать больше. Визуал может привлечь внимание, текст — объяснить суть, а CTA — показать следующий шаг.</p>
+          </section>
+
+          <!-- Раздел 3 -->
+          <section class="article-section" id="sec-hierarchy">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s3.title">Иерархия важнее количества информации</h2>
+            <p data-i18n="articleLanding.s3.p1">Пользователь не обязан внимательно изучать каждый блок в том порядке, в котором дизайнер расположил их в макете. Сначала он сканирует страницу: цепляется за заголовки, цифры, изображения, кнопки и знакомые паттерны, а уже потом решает, что читать подробнее.</p>
+            <p data-i18n="articleLanding.s3.p2">В классическом исследовании Nielsen Norman Group 79% участников сканировали новые веб-страницы, а не читали их слово за слово. Более поздние исследования команды показывают, что сканирование по-прежнему характерно и для десктопа, и для мобильных устройств, хотя оно далеко не всегда складывается в известный F-паттерн.</p>
+            <p data-i18n="articleLanding.s3.p3">Из этого следует не то, что нужно уместить весь смысл в трёх строках. Скорее, смысл должен сохраняться на разных уровнях чтения. Если человек посмотрит только на заголовки и ключевые визуальные акценты, он всё равно должен понять основную логику предложения. Если захочет разобраться глубже — найти детали там, где ожидает их увидеть.</p>
+            <p data-i18n="articleLanding.s3.p4">Хорошая иерархия отвечает на вопросы последовательно:</p>
+            <ul class="article-list">
+              <li data-i18n="articleLanding.s3.li1">Что это и для кого?</li>
+              <li data-i18n="articleLanding.s3.li2">Какую задачу решает?</li>
+              <li data-i18n="articleLanding.s3.li3">Почему этому можно верить?</li>
+              <li data-i18n="articleLanding.s3.li4">Как это работает или что входит в предложение?</li>
+              <li data-i18n="articleLanding.s3.li5">Что нужно сделать дальше?</li>
+            </ul>
+            <p data-i18n="articleLanding.s3.p5">Эти вопросы не обязательно превращать в пять одинаковых блоков. Но если все смыслы спорят за внимание одновременно, пользователю приходится самостоятельно собирать предложение из фрагментов. И чем больше усилий требует страница, тем проще её закрыть.</p>
+          </section>
+
+          <!-- Раздел 4 -->
+          <section class="article-section" id="sec-copy-role">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s4.title">Роль текста</h2>
+            <p data-i18n="articleLanding.s4.p1">Лендинг не становится убедительнее от слов «уникальный», «инновационный» и «лучший». Такие формулировки ничего не доказывают и заставляют человека переводить маркетинговый язык обратно в факты.</p>
+            <p data-i18n="articleLanding.s4.p2">В исследовании Nielsen Norman Group объективный текст показал на 27% более высокое удобство использования, чем версия с преувеличенной рекламной подачей. Краткий текст улучшил показатель на 58%, сканируемая структура — на 47%, а сочетание краткости, структуры и нейтрального языка — на 124%. Это старое и небольшое UX-исследование, поэтому его цифры нельзя механически переносить на любой коммерческий лендинг. Но сам принцип хорошо совпадает с тем, что мы видим сегодня: конкретику человеку обрабатывать проще, чем абстрактные обещания.</p>
+            <p data-i18n="articleLanding.s4.p3">Данные Unbounce дают похожий сигнал уже на большой выборке реальных лендингов. В их отчёте количество сложных слов отрицательно коррелировало с конверсией на 24,3%, время чтения — на 19,4%, объём текста — на 18,6%. Важно: это корреляция, а не доказательство того, что любое сокращение текста автоматически повысит продажи. Более того, сами авторы отмечают, что закономерность отличается в разных отраслях.</p>
+            <p data-i18n="articleLanding.s4.p4">Поэтому задача не в том, чтобы сделать текст максимально коротким. Задача — убрать всё, что не помогает понять ценность, снизить риск или принять решение.</p>
+            <p data-i18n="articleLanding.s4.p5">Вместо «комплексной инновационной платформы для эффективного управления» лучше объяснить, что именно человек сможет сделать, для кого предназначен продукт и какой результат он получит. Понятный текст не упрощает сам продукт — он упрощает путь к его пониманию.</p>
+          </section>
+
+          <!-- Раздел 5 -->
+          <section class="article-section" id="sec-trust">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s5.title">Как создаётся доверие</h2>
+            <p data-i18n="articleLanding.s5.p1">Отзывы, рейтинги, кейсы и логотипы клиентов могут усиливать предложение. Но они работают только тогда, когда отвечают на реальное сомнение пользователя и выглядят проверяемыми.</p>
+            <p data-i18n="articleLanding.s5.p2">Фраза «нам доверяют тысячи клиентов» без имён, цифр и контекста почти ничего не добавляет. А короткий кейс с исходной задачей, результатом и понятным источником уже помогает оценить продукт. Для одного бизнеса главным доказательством будет демонстрация интерфейса, для другого — лицензия, условия возврата, состав команды или живые фотографии.</p>
+            <p data-i18n="articleLanding.s5.p3">Рекомендации Stanford Web Credibility Project основаны на трёх годах исследований с участием более 4 500 человек. Среди факторов доверия там названы возможность проверить информацию, наличие реальной организации и людей за сайтом, понятные контакты, профессиональный и уместный визуальный образ, удобство, актуальность контента и отсутствие ошибок.</p>
+            <p data-i18n="articleLanding.s5.p4">То есть доверие — не один блок ближе к футеру. Это общее ощущение непротиворечивости страницы. Текст не обещает невозможного, визуал соответствует продукту, доказательства можно проверить, форма не просит лишнего, а условия не прячутся мелким шрифтом.</p>
+          </section>
+
+          <!-- Раздел 6 -->
+          <section class="article-section" id="sec-lead-user">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s6.title">Куда вы ведёте пользователя</h2>
+            <p data-i18n="articleLanding.s6.p1">Часто правило «один лендинг — одна кнопка» понимают слишком буквально. На длинной странице кнопок может быть несколько. Важно не количество повторений, а то, ведут ли они к одной логичной цели или растаскивают внимание в разные стороны.</p>
+            <p data-i18n="articleLanding.s6.p2">Если рядом одинаково активно предлагают купить, подписаться, скачать презентацию, написать менеджеру и перейти в каталог, пользователю приходится сначала решить, чего хочет от него сама страница.</p>
+            <p data-i18n="articleLanding.s6.p3">Хороший CTA объясняет следующий шаг. «Получить расчёт» обычно информативнее, чем «Отправить», а «Попробовать бесплатно» — яснее, чем «Узнать больше», если после клика действительно начинается пробный период. Кнопка должна не просто выделяться цветом, а продолжать обещание страницы.</p>
+            <p data-i18n="articleLanding.s6.p4">То же относится к форме. Короткая форма не всегда лучше длинной: дорогая B2B-услуга и регистрация на бесплатный вебинар требуют разного объёма информации. Но каждое поле должно быть оправдано ценностью следующего шага. Чем раньше бизнес просит телефон, должность, бюджет и название компании, тем яснее должен быть ответ на вопрос: что человек получит взамен?</p>
+          </section>
+
+          <!-- Раздел 7 -->
+          <section class="article-section" id="sec-screen-changes">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s7.title">Что меняется вместе с экраном</h2>
+            <p data-i18n="articleLanding.s7.p1">По данным Conversion Benchmark Report 2024, 83% проанализированных посещений лендингов пришлись на мобильные устройства. При этом десктоп конвертировал в среднем на 8% лучше. Эти цифры нельзя считать универсальным бенчмарком для любого проекта, но они хорошо показывают масштаб проблемы: основная часть аудитории часто получает менее удобную версию страницы.</p>
+            <p data-i18n="articleLanding.s7.p2">На мобильном меняется не только размер экрана. Меняется контекст использования, видимая область, точность нажатия, скорость соединения и терпимость к длинным формам. Поэтому адаптация — это не просто перестроить сетку и уменьшить заголовок.</p>
+            <p data-i18n="articleLanding.s7.p3">Нужно заново проверить:</p>
+            <ul class="article-list">
+              <li data-i18n="articleLanding.s7.li1">понятен ли оффер без контекста, который остался за пределами экрана;</li>
+              <li data-i18n="articleLanding.s7.li2">виден ли следующий шаг;</li>
+              <li data-i18n="articleLanding.s7.li3">легко ли нажать на элементы;</li>
+              <li data-i18n="articleLanding.s7.li4">удобно ли заполнить форму;</li>
+              <li data-i18n="articleLanding.s7.li5">не ломают ли ритм слишком тяжёлые изображения и анимация;</li>
+              <li data-i18n="articleLanding.s7.li6">сохраняется ли приоритет смыслов.</li>
+            </ul>
+            <p data-i18n="articleLanding.s7.p4">Иногда ради этого приходится сокращать второстепенный текст, менять порядок блоков или выбирать другой визуал. Это не компромиссная версия дизайна, а отдельный сценарий в рамках той же задачи.</p>
+          </section>
+
+          <!-- Раздел 8 -->
+          <section class="article-section" id="sec-speed">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s8.title">Скорость — часть пользовательского опыта</h2>
+            <p data-i18n="articleLanding.s8.p1">Можно идеально выстроить иерархию, но пользователь её не увидит, если первый экран загружается слишком долго или прыгает при появлении контента.</p>
+            <p data-i18n-html="articleLanding.s8.p2">Показательный пример — <a href="#source-8" class="article-source-link">A/B-тест Vodafone</a>. Компания сравнила две визуально и функционально одинаковые версии лендинга; отличие было в оптимизации Web Vitals. Улучшение показателя LCP на 31% сопровождалось ростом продаж на 8%, ростом отношения лидов к посещениям на 15% и переходов в корзину — на 11%.</p>
+            <p data-i18n="articleLanding.s8.p3">Это кейс одной компании, а не универсальная формула «минус секунда — плюс N процентов». Но он хорошо показывает, почему производительность нельзя оставлять на последний этап разработки. Вес изображений, видео на первом экране, шрифты, анимация и логика загрузки — это в том числе дизайн-решения.</p>
+          </section>
+
+          <!-- Раздел 9 -->
+          <section class="article-section" id="sec-beauty-vs-effective">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s9.title">Красивый ≠ эффективный</h2>
+            <p data-i18n="articleLanding.s9.p1">Визуальный дизайн влияет на первое впечатление и доверие. Но эффектный приём работает на задачу только тогда, когда помогает заметить главное, почувствовать характер продукта или лучше понять предложение.</p>
+            <p data-i18n="articleLanding.s9.p2">Если анимация задерживает доступ к содержанию, метафора требует расшифровки, а нестандартная навигация превращает простое действие в квест, визуальное решение начинает конкурировать с целью страницы.</p>
+            <p data-i18n="articleLanding.s9.p3">Это не аргумент в пользу одинаковых минималистичных лендингов. Наоборот: в среде, где базовые UX-паттерны стали нормой, выразительный визуальный язык помогает бренду выделиться и создать эмоциональную связь. Но различимость не должна покупаться ценой понимания. Сильный дизайн не украшает логику страницы — он делает её яснее и убедительнее.</p>
+          </section>
+
+          <!-- Раздел 10 -->
+          <section class="article-section" id="sec-data-after-launch">
+            <h2 class="article-sec-title" data-i18n="articleLanding.s10.title">После запуска смотрим на данные</h2>
+            <p data-i18n="articleLanding.s10.p1">До запуска можно проверить почти всё, что касается самого лендинга: понятен ли оффер, логично ли выстроена структура, совпадает ли страница с рекламой, удобно ли ей пользоваться с телефона, быстро ли загружается первый экран. Но после запуска появляется то, чего не даст ни один макет или прототип, — реальные данные.</p>
+            <p data-i18n="articleLanding.s10.p2">И смотреть только на конверсию здесь недостаточно. Допустим, после сокращения формы заявок стало на 20% больше. На первый взгляд результат хороший. Но если вместе с ними выросло количество нецелевых обращений, для бизнеса это может вообще ничего не изменить. Поэтому важно заранее понимать, какое действие действительно имеет ценность. Иногда это заявка, иногда покупка, активация, квалифицированный лид или выручка.</p>
+            <p data-i18n="articleLanding.s10.p3">По той же причине не стоит искать универсальные решения. Красная кнопка не обязательно будет работать лучше зелёной. Короткий лендинг не обязательно окажется эффективнее длинного, а видео на первом экране не обязательно даст больше продаж. Всё это может быть хорошей гипотезой — но только проверка на конкретной аудитории покажет, так ли это в данном случае.</p>
+            <p data-i18n="articleLanding.s10.p4">В результате хороший лендинг — это не набор обязательных блоков вроде «оффер → преимущества → отзывы → форма». Важно другое: человек должен быстро понять, что ему предлагают, разобраться, зачем ему это нужно, получить ответы на основные сомнения и понять, что делать дальше.</p>
+            <p data-i18n="articleLanding.s10.p5">Если какой-то блок не помогает пройти этот путь, его необязательно оставлять только потому, что так принято. Иногда лучше убрать текст, переставить блоки, изменить форму или вообще отказаться от привычного решения.</p>
+            <p data-i18n="articleLanding.s10.p6">Поэтому эффективный лендинг выглядит по-разному в зависимости от продукта, аудитории и задачи. Универсального набора «продающих» элементов нет. Есть конкретная страница, конкретные пользователи и результат, который можно проверить после запуска.</p>
+          </section>
+
+          <!-- Источники -->
+          <section class="sources-section" id="sources">
+            <h2 class="sources-title" data-i18n="articleLanding.sources.title">Источники</h2>
+            <ol class="sources-list">
+              <li><a href="https://support.google.com/google-ads/answer/2404197" target="_blank" rel="noopener noreferrer">Google Ads Help — Optimize your ads and landing pages</a></li>
+              <li><a href="https://unbounce.com/conversion-benchmark-report/" target="_blank" rel="noopener noreferrer">Unbounce — Conversion Benchmark Report 2024</a></li>
+              <li><a href="https://doi.org/10.1080/01449290500330448" target="_blank" rel="noopener noreferrer">Lindgaard et al. — Attention web designers: You have 50 milliseconds to make a good first impression</a></li>
+              <li><a href="https://www.nngroup.com/articles/information-scent/" target="_blank" rel="noopener noreferrer">Nielsen Norman Group — Information Scent: How Users Decide Where to Go Next</a></li>
+              <li><a href="https://www.nngroup.com/articles/how-users-read-on-the-web/" target="_blank" rel="noopener noreferrer">Nielsen Norman Group — How Users Read on the Web</a></li>
+              <li><a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" target="_blank" rel="noopener noreferrer">Nielsen Norman Group — F-Shaped Pattern of Reading: Misunderstood, But Still Relevant</a></li>
+              <li><a href="https://credibility.stanford.edu/guidelines/index.html" target="_blank" rel="noopener noreferrer">Stanford University — Stanford Guidelines for Web Credibility</a></li>
+              <li id="source-8"><a href="https://web.dev/case-studies/vodafone" target="_blank" rel="noopener noreferrer">web.dev — Vodafone: A 31% improvement in LCP increased sales by 8%</a></li>
+            </ol>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== ПОДВАЛ / FOOTER (СКОПИРОВАН С ПЕРВОЙ СТРАНИЦЫ) ==================== -->
+  <footer class="site-footer" id="contacts">
+    <div id="footer-fluid" class="fluid-canvas-bg"></div>
+    <div class="container footer-container">
+      
+      <div class="footer-left">
+        <h2 class="footer-heading" data-i18n-html="footer.heading">Сд<span class="italic-glyph">е</span>лаем что-то<br class="br-mobile"> стоящее?</h2>
+        
+        <p class="footer-desc" data-i18n-html="footer.desc">
+          От первой идеи до проработанного<br class="br-mobile">
+          интерфейса —<br class="br-desktop"> проектирую цифровые<br class="br-mobile">
+          продукты с ясной<br class="br-desktop"> логикой, понятной<br class="br-mobile">
+          целью и вниманием к деталям.
+        </p>
+
+        <div class="footer-contacts">
+          <div class="contact-group">
+            <span class="contact-label">Email</span>
+            <a href="mailto:darianekrasova.design@gmail.com" class="contact-link">darianekrasova.design@gmail.com</a>
+          </div>
+
+          <div class="contact-group">
+            <span class="contact-label">Telegram</span>
+            <a href="https://t.me/darioNekrasova" target="_blank" rel="noopener noreferrer" class="contact-link">@darioNekrasova</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <span class="copyright">&copy;&nbsp;2026</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Three.js (Offline) & LiquidEther Fluid Simulation Engine -->
+  <script src="assets/three.min.js"></script>
+  <script src="fluid.js"></script>
+
+  <!-- Smart Hide / Reveal Header on Scroll -->
+  <script>
+    (function() {
+      const header = document.querySelector('.site-header');
+      if (!header) return;
+
+      let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      let ticking = false;
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (window.scrollX !== 0) {
+              window.scrollTo(0, currentScrollY);
+            }
+
+            if (currentScrollY > 60) {
+              header.classList.add('header--scrolled');
+            } else {
+              header.classList.remove('header--scrolled');
+            }
+
+            const delta = currentScrollY - lastScrollY;
+            if (Math.abs(delta) > 4) {
+              if (delta > 0 && currentScrollY > 100) {
+                header.classList.add('header--hidden');
+              } else if (delta < 0) {
+                header.classList.remove('header--hidden');
+              }
+              lastScrollY = Math.max(0, currentScrollY);
+            }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- Mobile Menu Logic -->
+  <script>
+    (function initMobileMenu() {
+      const toggle = document.getElementById('mobileMenuToggle');
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileBackdrop');
+      const header = document.querySelector('.site-header');
+      const siteLogo = document.querySelector('.site-logo');
+      if (!toggle || !drawer) return;
+
+      function openMenu() {
+        drawer.classList.add('is-open');
+        toggle.classList.add('is-active');
+        if (header) header.classList.add('header--menu-open');
+        if (backdrop) backdrop.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        drawer.classList.remove('is-open');
+        toggle.classList.remove('is-active');
+        if (header) header.classList.remove('header--menu-open');
+        if (backdrop) backdrop.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (drawer.classList.contains('is-open')) closeMenu();
+        else openMenu();
+      });
+
+      if (backdrop) backdrop.addEventListener('click', closeMenu);
+      if (siteLogo) {
+        siteLogo.addEventListener('click', function() {
+          if (drawer.classList.contains('is-open')) closeMenu();
+        });
+      }
+
+      drawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+          closeMenu();
+        });
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 720 && drawer.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
+
+  <!-- Table of Contents Active Tracker (ScrollSpy) & Smooth Scrolling -->
+  <script>
+    (function initTocScrollSpy() {
+      const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+      if (!tocLinks.length) return;
+
+      const sections = tocLinks.map(link => {
+        const id = link.getAttribute('href');
+        return { link, el: document.querySelector(id) };
+      }).filter(item => item.el !== null);
+
+      function updateActiveToc() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const windowH = window.innerHeight;
+        const bodyH = document.documentElement.scrollHeight;
+
+        // Bottom of page: activate Sources
+        if (scrollY + windowH >= bodyH - 120) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          const last = tocLinks[tocLinks.length - 1];
+          if (last) last.classList.add('is-active');
+          return;
+        }
+
+        const checkPos = scrollY + 180;
+        let current = null;
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const { link, el } = sections[i];
+          if (checkPos >= el.offsetTop) {
+            current = link;
+            break;
+          }
+        }
+
+        if (!current && sections.length > 0) {
+          current = sections[0].link;
+        }
+
+        tocLinks.forEach(l => {
+          if (l === current) l.classList.add('is-active');
+          else l.classList.remove('is-active');
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveToc, { passive: true });
+      window.addEventListener('resize', updateActiveToc);
+      updateActiveToc();
+
+      // Smooth scroll with offset for fixed header
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (!href || !href.startsWith('#')) return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
+          const targetY = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: 'smooth'
+          });
+          history.pushState(null, null, href);
+        });
+      });
+    })();
+  </script>
+
+  <!-- Internationalization (RU / EN) -->
+  <script src="translations.js"></script>
+</body>
+</html>
