@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
 
@@ -135,9 +135,12 @@
           </p>
 
           <a href="#work" class="btn-primary">
-            <span class="btn-label" data-i18n="hero.btn">Смотреть проекты</span>
+            <span class="btn-flip-text">
+              <span class="btn-flip-face" data-i18n="hero.btn">Смотреть проекты</span>
+              <span class="btn-flip-clone" data-i18n="hero.btn" aria-hidden="true">Смотреть проекты</span>
+            </span>
             <span class="btn-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -169,10 +172,10 @@
 
                 <!-- Dynamic Descriptions Track -->
                 <div class="projects-descs-track">
-                  <p class="project-desc item-1 is-active" data-i18n="projects.p1.desc">Понимаю задачу, потребности пользователей и цели бизнеса</p>
-                  <p class="project-desc item-2" data-i18n="projects.p2.desc">Превращаю сложные сценарии в понятный и удобный пользовательский опыт</p>
-                  <p class="project-desc item-3" data-i18n="projects.p3.desc">Создаю интерфейсы с выразительным и цельным визуальным языком</p>
-                  <p class="project-desc item-4" data-i18n="projects.p4.desc">Использую AI, чтобы расширять возможности дизайна и ускорять творческий процесс</p>
+                  <p class="project-desc item-1 is-active" data-i18n-html="projects.p1.desc">Понимаю задачу, потребности пользователей<br class="br-desktop"> и цели бизнеса</p>
+                  <p class="project-desc item-2" data-i18n-html="projects.p2.desc">Превращаю сложные сценарии в понятный<br class="br-desktop"> и удобный пользовательский опыт</p>
+                  <p class="project-desc item-3" data-i18n-html="projects.p3.desc">Создаю интерфейсы с выразительным<br class="br-desktop"> и цельным визуальным языком</p>
+                  <p class="project-desc item-4" data-i18n-html="projects.p4.desc">Использую AI, чтобы расширять возможности<br class="br-desktop"> дизайна и ускорять творческий процесс</p>
                 </div>
               </div>
 
@@ -222,7 +225,7 @@
                 <div class="project-text-group">
                   <span class="section-tag" data-i18n="projects.tag">[ ПРОЕКТЫ ]</span>
                   <h2 class="project-title" data-i18n-html="projects.p1.title">Страт<span class="italic-glyph">е</span>ги<span class="italic-glyph">я</span></h2>
-                  <p class="project-desc" data-i18n="projects.p1.desc">Понимаю задачу, потребности пользователей и цели бизнеса</p>
+                  <p class="project-desc" data-i18n-html="projects.p1.desc">Понимаю задачу, потребности пользователей<br class="br-desktop"> и цели бизнеса</p>
                 </div>
                 <div class="client-badge">
                   <img src="assets/client-metafora.png" alt="Metafora Branding Logo" class="client-logo">
@@ -250,7 +253,7 @@
                 <div class="project-text-group">
                   <span class="section-tag" data-i18n="projects.tag">[ ПРОЕКТЫ ]</span>
                   <h2 class="project-title" data-i18n-html="projects.p2.title">UX</h2>
-                  <p class="project-desc" data-i18n="projects.p2.desc">Превращаю сложные сценарии в понятный и удобный пользовательский опыт</p>
+                  <p class="project-desc" data-i18n-html="projects.p2.desc">Превращаю сложные сценарии в понятный<br class="br-desktop"> и удобный пользовательский опыт</p>
                 </div>
                 <div class="client-badge">
                   <img src="assets/client-stas.png" alt="Stas Tretyak Logo" class="client-logo">
@@ -277,7 +280,7 @@
                 <div class="project-text-group">
                   <span class="section-tag" data-i18n="projects.tag">[ ПРОЕКТЫ ]</span>
                   <h2 class="project-title" data-i18n-html="projects.p3.title">Виз<span class="italic-glyph">уа</span>л</h2>
-                  <p class="project-desc" data-i18n="projects.p3.desc">Создаю интерфейсы с выразительным и цельным визуальным языком</p>
+                  <p class="project-desc" data-i18n-html="projects.p3.desc">Создаю интерфейсы с выразительным<br class="br-desktop"> и цельным визуальным языком</p>
                 </div>
                 <div class="client-badge">
                   <img src="assets/client-labviews.png" alt="Lab Views Logo" class="client-logo">
@@ -305,7 +308,7 @@
                 <div class="project-text-group">
                   <span class="section-tag" data-i18n="projects.tag">[ ПРОЕКТЫ ]</span>
                   <h2 class="project-title" data-i18n-html="projects.p4.title">AI и креат<span class="italic-glyph">и</span>в</h2>
-                  <p class="project-desc" data-i18n="projects.p4.desc">Использую AI, чтобы расширять возможности дизайна и ускорять творческий процесс</p>
+                  <p class="project-desc" data-i18n-html="projects.p4.desc">Использую AI, чтобы расширять возможности<br class="br-desktop"> дизайна и ускорять творческий процесс</p>
                 </div>
                 <div class="client-badge">
                   <img src="assets/client-dungeon.png" alt="Dungeon Master Logo" class="client-logo">
@@ -455,11 +458,13 @@
     <section class="notes-section" id="notes">
       <div class="container">
         <h2 class="notes-heading" data-i18n="notes.heading">Заметки о дизайне</h2>
+      </div>
 
-        <div class="notes-table">
+      <div class="notes-table">
 
-          <!-- Заметка 1 -->
-          <a href="landing-page-effective.html" class="note-entry">
+        <!-- Заметка 1 -->
+        <a href="landing-page-effective.html" class="note-entry">
+          <div class="container note-entry-inner">
             <div class="note-thumb-wrap">
               <img src="assets/note-1.png" alt="Обложка заметки" class="note-thumb">
             </div>
@@ -473,10 +478,12 @@
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </span>
-          </a>
+          </div>
+        </a>
 
-          <!-- Заметка 2 -->
-          <a href="#" class="note-entry">
+        <!-- Заметка 2 -->
+        <a href="#" class="note-entry">
+          <div class="container note-entry-inner">
             <div class="note-thumb-wrap">
               <img src="assets/note-2.png" alt="Обложка заметки" class="note-thumb">
             </div>
@@ -490,10 +497,12 @@
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </span>
-          </a>
+          </div>
+        </a>
 
-          <!-- Заметка 3 -->
-          <a href="#" class="note-entry">
+        <!-- Заметка 3 -->
+        <a href="#" class="note-entry">
+          <div class="container note-entry-inner">
             <div class="note-thumb-wrap">
               <img src="assets/note-3.png" alt="Обложка заметки" class="note-thumb">
             </div>
@@ -507,9 +516,9 @@
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </span>
-          </a>
+          </div>
+        </a>
 
-        </div>
       </div>
     </section>
 
@@ -517,19 +526,21 @@
 
   <!-- ==================== ПОДВАЛ / FOOTER ==================== -->
   <footer class="site-footer" id="contacts">
-    <div id="footer-fluid" class="fluid-canvas-bg"></div>
     <div class="container footer-container">
       
-      <div class="footer-left">
-        <h2 class="footer-heading" data-i18n-html="footer.heading">Сд<span class="italic-glyph">е</span>лаем что-то<br class="br-mobile"> стоящее?</h2>
+      <!-- Top: Footer Message (963px) -->
+      <div class="footer-message">
+        <h2 class="footer-heading" data-i18n-html="footer.heading">Сделаем чт<span class="italic-glyph">о</span>-то<br class="br-mobile"> стоящее?</h2>
         
         <p class="footer-desc" data-i18n-html="footer.desc">
-          От первой идеи до проработанного<br class="br-mobile">
-          интерфейса —<br class="br-desktop"> проектирую цифровые<br class="br-mobile">
-          продукты с ясной<br class="br-desktop"> логикой, понятной<br class="br-mobile">
-          целью и вниманием к деталям.
+          От первой идеи до проработанного интерфейса —<br class="br-desktop">
+          проектирую цифровые продукты с ясной<br class="br-desktop">
+          логикой, понятной целью и вниманием к деталям.
         </p>
+      </div>
 
+      <!-- Bottom: Contact Details & Copyright (row, space-between, align-items flex-end) -->
+      <div class="footer-contact-details">
         <div class="footer-contacts">
           <div class="contact-group">
             <span class="contact-label">Email</span>
@@ -541,17 +552,16 @@
             <a href="https://t.me/darioNekrasova" target="_blank" rel="noopener noreferrer" class="contact-link">@darioNekrasova</a>
           </div>
         </div>
-      </div>
 
-      <div class="footer-right">
-        <span class="copyright">&copy;&nbsp;2026</span>
+        <div class="footer-copyright">
+          <span class="copyright">&copy;&nbsp;2026</span>
+        </div>
       </div>
 
     </div>
   </footer>
 
-  <!-- Three.js (Offline) & LiquidEther Fluid Simulation Engine -->
-  <script src="assets/three.min.js"></script>
+  <!-- Fluid Simulation Engine -->
   <script src="fluid.js"></script>
 
   <!-- Smart Hide / Reveal Header on Scroll -->
@@ -725,6 +735,130 @@
 
       window.rebuildServicesMarquee = rebuildServicesMarquee;
       rebuildServicesMarquee();
+
+      // Fluid row-to-row background indicator (Vivid Motion glide & scroll-aware tracking)
+      const serviceLists = document.querySelectorAll('.service-items');
+      let lastClientX = -1;
+      let lastClientY = -1;
+      let isPointerActive = false;
+
+      serviceLists.forEach(ul => {
+        ul.classList.add('has-floating-bg');
+        let bg = ul.querySelector('.service-hover-bg');
+        if (!bg) {
+          bg = document.createElement('div');
+          bg.className = 'service-hover-bg';
+          bg.setAttribute('aria-hidden', 'true');
+          ul.prepend(bg);
+        }
+      });
+
+      function activateRow(li) {
+        if (!li) return;
+        const ul = li.closest('.service-items');
+        if (!ul) return;
+        const bg = ul.querySelector('.service-hover-bg');
+
+        // Deactivate other rows in this list
+        ul.querySelectorAll('li.is-hovered').forEach(other => {
+          if (other !== li) other.classList.remove('is-hovered');
+        });
+
+        // If other service lists had active rows, clear them
+        serviceLists.forEach(otherUl => {
+          if (otherUl !== ul) deactivateUl(otherUl);
+        });
+
+        li.classList.add('is-hovered');
+
+        if (bg) {
+          const top = li.offsetTop;
+          const height = li.offsetHeight;
+          const wasVisible = bg.classList.contains('is-visible');
+
+          if (!wasVisible) {
+            // First entry: set position without glide, then fade in smoothly
+            bg.style.transition = 'none';
+            bg.style.transform = `translate3d(0, ${top}px, 0)`;
+            bg.style.height = `${height}px`;
+            void bg.offsetHeight;
+            bg.style.transition = '';
+            bg.classList.add('is-visible');
+          } else {
+            // Moving between rows: glide smoothly
+            bg.style.transform = `translate3d(0, ${top}px, 0)`;
+            bg.style.height = `${height}px`;
+            bg.classList.add('is-visible');
+          }
+        }
+      }
+
+      function deactivateUl(ul) {
+        if (!ul) return;
+        ul.querySelectorAll('li.is-hovered').forEach(li => li.classList.remove('is-hovered'));
+        const bg = ul.querySelector('.service-hover-bg');
+        if (bg) {
+          bg.classList.remove('is-visible');
+        }
+      }
+
+      // Mouse listeners on rows and list
+      serviceLists.forEach(ul => {
+        const rows = ul.querySelectorAll('li');
+        rows.forEach(li => {
+          li.addEventListener('mouseenter', () => {
+            activateRow(li);
+          });
+        });
+
+        ul.addEventListener('mouseleave', () => {
+          deactivateUl(ul);
+        });
+      });
+
+      // Track cursor position globally
+      window.addEventListener('mousemove', e => {
+        lastClientX = e.clientX;
+        lastClientY = e.clientY;
+        isPointerActive = true;
+      }, { passive: true });
+
+      window.addEventListener('mouseout', e => {
+        if (!e.relatedTarget) {
+          isPointerActive = false;
+          serviceLists.forEach(deactivateUl);
+        }
+      });
+
+      // Scroll-aware row activation: triggers smooth row transition as rows move under stationary cursor
+      let scrollTicking = false;
+      function checkHoverOnScroll() {
+        if (!isPointerActive || lastClientX < 0 || lastClientY < 0) return;
+
+        const target = document.elementFromPoint(lastClientX, lastClientY);
+        if (!target) return;
+
+        const row = target.closest('.service-items li');
+        if (row) {
+          activateRow(row);
+        } else {
+          serviceLists.forEach(ul => {
+            if (!ul.contains(target)) {
+              deactivateUl(ul);
+            }
+          });
+        }
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(() => {
+            checkHoverOnScroll();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      }, { passive: true });
     })();
   </script>
 
@@ -874,22 +1008,24 @@
           nextDesc.classList.add('is-active');
         }
 
-        // 3. Animate Clients (Vivid Motion signature x-translation & spring)
+        // 3. Animate Clients (Vivid Motion signature directional translation & soft bounce)
         const prevClient = clients[prevIndex];
         const nextClient = clients[newIndex];
         if (window.gsap && prevClient && nextClient) {
           prevClient.classList.remove('is-active');
           gsap.to(prevClient, {
             autoAlpha: 0,
-            x: -24,
-            duration: 0.25,
+            x: isDown ? -20 : 20,
+            y: isDown ? -6 : 6,
+            scale: 0.96,
+            duration: 0.32,
             ease: 'power2.in',
             overwrite: true
           });
           nextClient.classList.add('is-active');
           gsap.fromTo(nextClient,
-            { autoAlpha: 0, x: -28 },
-            { autoAlpha: 1, x: 0, duration: 0.38, ease: 'back.out(1.5)', overwrite: true }
+            { autoAlpha: 0, x: isDown ? 24 : -24, y: isDown ? 8 : -8, scale: 0.94 },
+            { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 0.48, ease: 'back.out(1.25)', overwrite: true }
           );
         } else if (prevClient && nextClient) {
           prevClient.classList.remove('is-active');
@@ -981,8 +1117,8 @@
         });
 
         clients.forEach((c, i) => {
-          if (i === 0) { c.classList.add('is-active'); gsap.set(c, { autoAlpha: 1, x: 0 }); }
-          else { c.classList.remove('is-active'); gsap.set(c, { autoAlpha: 0 }); }
+          if (i === 0) { c.classList.add('is-active'); gsap.set(c, { autoAlpha: 1, x: 0, y: 0, scale: 1 }); }
+          else { c.classList.remove('is-active'); gsap.set(c, { autoAlpha: 0, x: 0, y: 0, scale: 1 }); }
         });
 
         // Create scroll triggers for each project card
@@ -1042,8 +1178,259 @@
     })();
   </script>
 
+  <!-- WebGL Liquid Glitch & Chromatic Aberration Shader for Projects (Vivid Motion style) -->
+  <script>
+    (function initGlitchHover() {
+      // Only enable WebGL shader on desktop devices that support hover
+      if (window.innerWidth < 992 || !window.matchMedia('(hover: hover)').matches) return;
+
+      const wraps = document.querySelectorAll('.project-media-wrap');
+      if (!wraps.length) return;
+
+      const vsSource = `
+        attribute vec2 a_position;
+        varying vec2 v_uv;
+        void main() {
+          v_uv = (a_position + 1.0) * 0.5;
+          v_uv.y = 1.0 - v_uv.y;
+          gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+      `;
+
+      const fsSource = `
+        precision mediump float;
+        uniform sampler2D u_image;
+        uniform vec2 u_mouse;
+        uniform float u_hover;
+        uniform float u_glitch;
+        uniform float u_time;
+        varying vec2 v_uv;
+
+        float hash(vec2 p) {
+          return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+        }
+
+        void main() {
+          vec2 uv = v_uv;
+          
+          // Fluid distance from mouse
+          vec2 toMouse = uv - u_mouse;
+          float d = length(toMouse);
+          vec2 dir = d > 0.001 ? normalize(toMouse) : vec2(1.0, 0.0);
+          
+          // Liquid mouse displacement wave (Vivid Motion signature)
+          float wave = sin(d * 24.0 - u_time * 6.0) * exp(-d * 3.2) * 0.035 * u_hover;
+          
+          // Glitch slice distortion
+          float slice = floor(uv.y * 32.0);
+          float sliceNoise = hash(vec2(slice, floor(u_time * 12.0))) * 2.0 - 1.0;
+          float glitchBand = step(0.65, hash(vec2(slice * 1.5, floor(u_time * 8.0))));
+          vec2 glitchOffset = vec2(sliceNoise * 0.032 * glitchBand * u_glitch, 0.0);
+          
+          vec2 warp = uv + dir * wave + glitchOffset;
+          
+          // Chromatic aberration RGB split
+          float aber = (0.016 * u_hover + 0.032 * u_glitch);
+          vec2 rUv = warp + dir * aber * (1.0 + wave * 4.0);
+          vec2 gUv = warp;
+          vec2 bUv = warp - dir * aber * (1.0 + wave * 4.0);
+          
+          float r = texture2D(u_image, clamp(rUv, 0.0, 1.0)).r;
+          float g = texture2D(u_image, clamp(gUv, 0.0, 1.0)).g;
+          float b = texture2D(u_image, clamp(bUv, 0.0, 1.0)).b;
+          float a = texture2D(u_image, clamp(warp, 0.0, 1.0)).a;
+          
+          gl_FragColor = vec4(r, g, b, a);
+        }
+      `;
+
+      function createShader(gl, type, src) {
+        const s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        return s;
+      }
+
+      wraps.forEach(wrap => {
+        const img = wrap.querySelector('img');
+        if (!img) return;
+
+        let canvas, gl, prog, texture;
+        let uImageLoc, uMouseLoc, uHoverLoc, uGlitchLoc, uTimeLoc;
+        let animId = null;
+        let isHovered = false;
+        let mouseX = 0.5, mouseY = 0.5;
+        let curMouseX = 0.5, curMouseY = 0.5;
+        let hoverVal = 0, glitchVal = 0;
+        let startTime = performance.now();
+        let isTextureLoaded = false;
+
+        function initGL() {
+          try {
+            canvas = document.createElement('canvas');
+            canvas.className = 'project-glitch-canvas';
+            wrap.appendChild(canvas);
+
+            gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false }) ||
+                 canvas.getContext('experimental-webgl', { alpha: true, antialias: false, depth: false });
+            if (!gl) return false;
+
+            const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
+            const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+            prog = gl.createProgram();
+            gl.attachShader(prog, vs);
+            gl.attachShader(prog, fs);
+            gl.linkProgram(prog);
+            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return false;
+
+            gl.useProgram(prog);
+
+            const posBuf = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+            const posLoc = gl.getAttribLocation(prog, 'a_position');
+            gl.enableVertexAttribArray(posLoc);
+            gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+            uImageLoc = gl.getUniformLocation(prog, 'u_image');
+            uMouseLoc = gl.getUniformLocation(prog, 'u_mouse');
+            uHoverLoc = gl.getUniformLocation(prog, 'u_hover');
+            uGlitchLoc = gl.getUniformLocation(prog, 'u_glitch');
+            uTimeLoc = gl.getUniformLocation(prog, 'u_time');
+
+            texture = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, texture);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+            function upload() {
+              try {
+                gl.bindTexture(gl.TEXTURE_2D, texture);
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+                isTextureLoaded = true;
+                resize();
+              } catch (e) {
+                if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+              }
+            }
+
+            if (img.complete && img.naturalWidth > 0) upload();
+            else img.addEventListener('load', upload);
+
+            resize();
+            return true;
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function resize() {
+          if (!gl || !canvas) return;
+          const rect = wrap.getBoundingClientRect();
+          if (rect.width === 0 || rect.height === 0) return;
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const w = Math.round(rect.width * dpr);
+          const h = Math.round(rect.height * dpr);
+          if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w;
+            canvas.height = h;
+            gl.viewport(0, 0, w, h);
+          }
+        }
+
+        function render(now) {
+          if (!gl || !isTextureLoaded) {
+            animId = null;
+            return;
+          }
+
+          curMouseX += (mouseX - curMouseX) * 0.12;
+          curMouseY += (mouseY - curMouseY) * 0.12;
+
+          const targetHover = isHovered ? 1 : 0;
+          hoverVal += (targetHover - hoverVal) * 0.14;
+          glitchVal *= 0.92;
+
+          if (!isHovered && hoverVal < 0.005 && glitchVal < 0.005) {
+            hoverVal = 0;
+            glitchVal = 0;
+            animId = null;
+            canvas.style.opacity = '0';
+            return;
+          }
+
+          canvas.style.opacity = '1';
+
+          gl.useProgram(prog);
+          gl.uniform2f(uMouseLoc, curMouseX, curMouseY);
+          gl.uniform1f(uHoverLoc, hoverVal);
+          gl.uniform1f(uGlitchLoc, glitchVal);
+          gl.uniform1f(uTimeLoc, (now - startTime) * 0.001);
+
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+          animId = requestAnimationFrame(render);
+        }
+
+        function startLoop() {
+          if (!animId) {
+            startTime = performance.now();
+            animId = requestAnimationFrame(render);
+          }
+        }
+
+        if (!initGL()) return;
+
+        wrap.addEventListener('mouseenter', e => {
+          const card = wrap.closest('.project-card');
+          if (card && !card.classList.contains('is-active')) return;
+          isHovered = true;
+          glitchVal = 0.85;
+          const rect = wrap.getBoundingClientRect();
+          mouseX = (e.clientX - rect.left) / rect.width;
+          mouseY = (e.clientY - rect.top) / rect.height;
+          curMouseX = mouseX;
+          curMouseY = mouseY;
+          startLoop();
+        });
+
+        wrap.addEventListener('mousemove', e => {
+          if (!isHovered) return;
+          const rect = wrap.getBoundingClientRect();
+          mouseX = (e.clientX - rect.left) / rect.width;
+          mouseY = (e.clientY - rect.top) / rect.height;
+        });
+
+        wrap.addEventListener('mouseleave', () => {
+          isHovered = false;
+        });
+
+        window.addEventListener('resize', resize);
+      });
+    })();
+  </script>
+
   <!-- Internationalization (RU / EN) -->
   <script src="translations.js"></script>
+
+  <!-- Hero Button Focus & Click Smooth Scroll Handler -->
+  <script>
+    (function() {
+      const heroBtn = document.querySelector('.btn-primary');
+      if (heroBtn) {
+        heroBtn.addEventListener('click', function(e) {
+          const target = document.querySelector('#work');
+          if (target) {
+            e.preventDefault();
+            this.focus();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
 

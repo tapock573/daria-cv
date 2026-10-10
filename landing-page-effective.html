@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body data-page-title="articleLanding.metaTitle">
 
@@ -114,8 +114,8 @@
 
   <!-- ==================== ГЛАВНЫЙ ЭКРАН СТАТЬИ / ARTICLE HERO ==================== -->
   <section class="article-hero" id="article-hero">
-    <!-- WebGL Molten Amber Liquid Container -->
-    <div id="hero-fluid" class="fluid-canvas-bg"></div>
+    <!-- WebGL Fluid Container (Article specific color) -->
+    <div id="hero-fluid" class="fluid-canvas-bg" data-fluid-color="#EF4444" data-fluid-rainbow="false"></div>
 
     <div class="article-hero-inner">
       <div class="article-meta">
@@ -334,19 +334,21 @@
 
   <!-- ==================== ПОДВАЛ / FOOTER (СКОПИРОВАН С ПЕРВОЙ СТРАНИЦЫ) ==================== -->
   <footer class="site-footer" id="contacts">
-    <div id="footer-fluid" class="fluid-canvas-bg"></div>
     <div class="container footer-container">
       
-      <div class="footer-left">
-        <h2 class="footer-heading" data-i18n-html="footer.heading">Сд<span class="italic-glyph">е</span>лаем что-то<br class="br-mobile"> стоящее?</h2>
+      <!-- Top: Footer Message (963px) -->
+      <div class="footer-message">
+        <h2 class="footer-heading" data-i18n-html="footer.heading">Сделаем чт<span class="italic-glyph">о</span>-то<br class="br-mobile"> стоящее?</h2>
         
         <p class="footer-desc" data-i18n-html="footer.desc">
-          От первой идеи до проработанного<br class="br-mobile">
-          интерфейса —<br class="br-desktop"> проектирую цифровые<br class="br-mobile">
-          продукты с ясной<br class="br-desktop"> логикой, понятной<br class="br-mobile">
-          целью и вниманием к деталям.
+          От первой идеи до проработанного интерфейса —<br class="br-desktop">
+          проектирую цифровые продукты с ясной<br class="br-desktop">
+          логикой, понятной целью и вниманием к деталям.
         </p>
+      </div>
 
+      <!-- Bottom: Contact Details & Copyright (row, space-between, align-items flex-end) -->
+      <div class="footer-contact-details">
         <div class="footer-contacts">
           <div class="contact-group">
             <span class="contact-label">Email</span>
@@ -358,17 +360,16 @@
             <a href="https://t.me/darioNekrasova" target="_blank" rel="noopener noreferrer" class="contact-link">@darioNekrasova</a>
           </div>
         </div>
-      </div>
 
-      <div class="footer-right">
-        <span class="copyright">&copy;&nbsp;2026</span>
+        <div class="footer-copyright">
+          <span class="copyright">&copy;&nbsp;2026</span>
+        </div>
       </div>
 
     </div>
   </footer>
 
-  <!-- Three.js (Offline) & LiquidEther Fluid Simulation Engine -->
-  <script src="assets/three.min.js"></script>
+  <!-- Fluid Simulation Engine -->
   <script src="fluid.js"></script>
 
   <!-- Smart Hide / Reveal Header on Scroll -->

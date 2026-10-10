@@ -25,19 +25,19 @@ const PORTFOLIO_I18N = {
       clientLabel: 'КЛИЕНТ',
       p1: {
         title: 'Страт<span class="italic-glyph">е</span>ги<span class="italic-glyph">я</span>',
-        desc: 'Понимаю задачу, потребности пользователей и цели бизнеса',
+        desc: 'Понимаю задачу, потребности пользователей<br class="br-desktop"> и цели бизнеса',
       },
       p2: {
         title: 'UX',
-        desc: 'Превращаю сложные сценарии в понятный и удобный пользовательский опыт',
+        desc: 'Превращаю сложные сценарии в понятный<br class="br-desktop"> и удобный пользовательский опыт',
       },
       p3: {
         title: 'Виз<span class="italic-glyph">уа</span>л',
-        desc: 'Создаю интерфейсы с выразительным и цельным визуальным языком',
+        desc: 'Создаю интерфейсы с выразительным<br class="br-desktop"> и цельным визуальным языком',
       },
       p4: {
         title: 'AI и креат<span class="italic-glyph">и</span>в',
-        desc: 'Использую AI, чтобы расширять возможности дизайна и ускорять творческий процесс',
+        desc: 'Использую AI, чтобы расширять возможности<br class="br-desktop"> дизайна и ускорять творческий процесс',
       }
     },
     about: {
@@ -90,8 +90,8 @@ const PORTFOLIO_I18N = {
       }
     },
     footer: {
-      heading: 'Сд<span class="italic-glyph">е</span>лаем что-то<br class="br-mobile"> стоящее?',
-      desc: 'От первой идеи до проработанного<br class="br-mobile"> интерфейса —<br class="br-desktop"> проектирую цифровые<br class="br-mobile"> продукты с ясной<br class="br-desktop"> логикой, понятной<br class="br-mobile"> целью и вниманием к деталям.',
+      heading: 'Сделаем чт<span class="italic-glyph">о</span>-то<br class="br-mobile"> стоящее?',
+      desc: 'От первой идеи до проработанного интерфейса —<br class="br-desktop"> проектирую цифровые продукты с ясной<br class="br-desktop"> логикой, понятной целью и вниманием к деталям.',
     },
     articleLanding: {
       metaTitle: 'Что делает лендинг эффективным — Daria Nekrasova',
@@ -218,7 +218,7 @@ const PORTFOLIO_I18N = {
       contacts: 'Contacts',
     },
     hero: {
-      title: 'Des<span class="italic-glyph">ign</span>ing d<span class="italic-glyph">ig</span>ital<br>products w<span class="italic-glyph">it</span>h<br class="br-mobile"> purpose.',
+      title: 'Designing digital<br>products <span class="italic-text">with</span><br class="br-mobile"> purpose.',
       desc: 'Combining UX, visual design, and business<br class="br-desktop"> thinking to create digital products<br class="br-desktop"> that are both beautiful and effective',
       btn: 'Explore my work',
     },
@@ -227,19 +227,19 @@ const PORTFOLIO_I18N = {
       clientLabel: 'CLIENT',
       p1: {
         title: 'Strat<span class="italic-glyph">e</span>gy',
-        desc: 'Understanding the problem, users and business goals',
+        desc: 'Understanding the problem, users<br class="br-desktop"> and business goals',
       },
       p2: {
         title: 'UX',
-        desc: 'Turning complexity into clear, intuitive experiences',
+        desc: 'Turning complexity into clear,<br class="br-desktop"> intuitive experiences',
       },
       p3: {
-        title: 'V<span class="italic-glyph">is</span>ual design',
-        desc: 'Creating interfaces with a strong visual language',
+        title: 'V<span class="italic-glyph">is</span>ual des<span class="italic-glyph">ig</span>n',
+        desc: 'Creating interfaces with<br class="br-desktop"> a strong visual language',
       },
       p4: {
-        title: 'AI &amp; cr<span class="italic-glyph">eat</span>ive',
-        desc: 'Using AI to expand creative possibilities and accelerate design',
+        title: 'AI <span class="italic-glyph">&amp;</span> cr<span class="italic-glyph">eat</span>ive',
+        desc: 'Using AI to expand creative possibilities<br class="br-desktop"> and accelerate design',
       }
     },
     about: {
@@ -292,8 +292,8 @@ const PORTFOLIO_I18N = {
       }
     },
     footer: {
-      heading: 'Let’s <span class="italic-glyph">make</span><br class="br-mobile"> <span class="italic-glyph">so</span>mething work',
-      desc: 'From first idea to polished interface —<br class="br-mobile"> I design digital products with<br class="br-desktop"> clarity,<br class="br-mobile"> purpose, and attention to detail',
+      heading: 'Let’s m<span class="italic-glyph">ak</span>e s<span class="italic-glyph">o</span>mething<br class="br-mobile"> work',
+      desc: 'From first idea to polished interface —<br class="br-desktop"> I design digital products with clarity,<br class="br-desktop"> purpose, and attention to detail',
     },
     articleLanding: {
       metaTitle: 'What makes a landing page effective — Daria Nekrasova',
