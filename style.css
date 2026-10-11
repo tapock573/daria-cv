@@ -486,7 +486,7 @@ main {
   font-variation-settings: 'opsz' 48;
   font-size: clamp(3.2rem, 6.1vw, 117px);
   font-weight: 400;
-  line-height: 110px;
+  line-height: 1.05;
   letter-spacing: -0.04em;
   color: #ffffff;
   max-width: 1080px;
@@ -1027,6 +1027,10 @@ main {
   .project-glitch-canvas {
     display: none !important;
   }
+}
+
+.project-card-pagination {
+  display: none;
 }
 
 /* Active & Inactive card interaction (Vivid Motion style) */
@@ -1608,7 +1612,7 @@ main {
 
   .hero-title {
     font-size: 88px;
-    line-height: 84px;
+    line-height: 1.05;
     letter-spacing: -0.04em;
     max-width: 810px;
     margin-bottom: 294px;
@@ -1926,7 +1930,7 @@ main {
 
   .hero-title {
     font-size: 80px;
-    line-height: 76px;
+    line-height: 1.05;
     letter-spacing: -0.04em;
     max-width: 810px;
     margin-bottom: 208px;
@@ -2059,7 +2063,7 @@ main {
 
   .hero-title {
     font-size: 80px;
-    line-height: 76px;
+    line-height: 1.05;
     letter-spacing: -0.04em;
     max-width: 711px;
     margin-bottom: 173px;
@@ -2202,7 +2206,8 @@ main {
 
   .project-media-wrap {
     width: 100%;
-    max-width: 100%;
+    max-width: 762px;
+    height: auto;
     opacity: 1 !important;
     filter: none !important;
     transform: none !important;
@@ -2214,6 +2219,7 @@ main {
     display: block;
     width: 100%;
     max-width: 100%;
+    height: auto;
   }
 
   .mockup-img {
@@ -2221,8 +2227,47 @@ main {
     width: 100%;
     max-width: 100%;
     height: auto;
+    aspect-ratio: auto;
     object-fit: unset;
     border-radius: 12px;
+  }
+
+  .project-card-pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 46px;
+    height: 4px;
+    margin-top: 24px;
+  }
+
+  .pagination-pip {
+    position: relative;
+    display: block;
+    height: 4px;
+    width: 4px;
+    background: #ffffff;
+    opacity: 0.3;
+    border-radius: 1px;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    cursor: pointer;
+  }
+
+  .pagination-pip::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -4px;
+    right: -4px;
+  }
+
+  .pagination-pip.is-active {
+    width: 16px;
+    opacity: 1;
+    border-radius: 1px;
   }
 
 
@@ -2457,10 +2502,10 @@ main {
 
   .hero-title {
     font-size: 48px;
-    line-height: 46px;
+    line-height: 58px;
     letter-spacing: -0.04em;
     max-width: 328px;
-    margin-bottom: 251px;
+    margin-bottom: 220px;
   }
 
   .hero-footer-row {
@@ -2628,9 +2673,44 @@ main {
     font-size: 14px;
   }
 
-  .mockup-img,
+  .project-media {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .project-media-wrap {
+    width: 100%;
+    max-width: 328px;
+    height: auto;
+    aspect-ratio: 328 / 409;
     border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  .project-media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mockup-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: 328 / 409;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .project-card-pagination {
+    margin-top: 20px;
   }
 
 
