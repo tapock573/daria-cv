@@ -16,7 +16,7 @@ const PORTFOLIO_I18N = {
       contacts: 'Контакты',
     },
     hero: {
-      title: 'Созда<span class="italic-glyph">ю</span><br class="br-mobile"> цифров<span class="italic-glyph">ы</span>е<br>продукт<span class="italic-glyph">ы</span> со<br class="br-mobile"> см<span class="italic-glyph">ы</span>слом.',
+      title: 'Созда<span class="italic-glyph">ю</span><br class="br-mobile"> цифров<span class="italic-glyph">ы</span>е<br>прод<span class="italic-glyph">у</span>кт<span class="italic-glyph">ы</span> со<br class="br-mobile"> см<span class="italic-glyph">ы</span>слом.',
       desc: 'Сочетаю UX, визуальный дизайн<br>и бизнес-мышление, создавая<br>продукты, которые работают.',
       btn: 'Смотреть проекты',
     },
@@ -46,7 +46,7 @@ const PORTFOLIO_I18N = {
     },
     services: {
       s1: {
-        title: 'Продукт и UX',
+        title: 'Прод<span class="italic-glyph">у</span>кт и UX',
         items: [
           'ПРОДУКТОВОЕ ИССЛЕДОВАНИЕ',
           'ПРОДУКТОВОЕ ИССЛЕДОВАНИЕ',
@@ -56,7 +56,7 @@ const PORTFOLIO_I18N = {
         ]
       },
       s2: {
-        title: 'Диза<span class="italic-glyph">й</span>н интерфейсов',
+        title: 'Диз<span class="italic-glyph">а</span>йн интерфейсов',
         items: [
           'ПРОДУКТ',
           'ВЕБ',
@@ -65,7 +65,7 @@ const PORTFOLIO_I18N = {
         ]
       },
       s3: {
-        title: 'Визу<span class="italic-glyph">а</span>льное направление',
+        title: 'Визу<span class="italic-glyph">а</span>льное направл<span class="italic-glyph">е</span>ние',
         items: [
           'АРТ-ДИРЕКШН',
           'ВИЗУАЛЬНЫЕ КОНЦЕПЦИИ',
@@ -90,7 +90,7 @@ const PORTFOLIO_I18N = {
       }
     },
     footer: {
-      heading: 'Сделаем чт<span class="italic-glyph">о</span>-то<br class="br-mobile"> стоящее?',
+      heading: 'Сд<span class="italic-glyph">е</span>лаем чт<span class="italic-glyph">о</span>-то<br class="br-mobile"> ст<span class="italic-glyph">о</span>ящее?',
       desc: 'От первой идеи до проработанного интерфейса —<br class="br-desktop"> проектирую цифровые продукты с ясной<br class="br-desktop"> логикой, понятной целью и вниманием к деталям.',
     },
     articleLanding: {
@@ -218,7 +218,7 @@ const PORTFOLIO_I18N = {
       contacts: 'Contacts',
     },
     hero: {
-      title: 'Designing digital<br>products <span class="italic-text">with</span><br class="br-mobile"> purpose.',
+      title: 'Des<span class="italic-glyph">i</span>gning d<span class="italic-glyph">i</span>gital<br>products w<span class="italic-text">i</span>th<br class="br-mobile"> purpose.',
       desc: 'Combining UX, visual design, and business<br class="br-desktop"> thinking to create digital products<br class="br-desktop"> that are both beautiful and effective',
       btn: 'Explore my work',
     },
@@ -234,11 +234,11 @@ const PORTFOLIO_I18N = {
         desc: 'Turning complexity into clear,<br class="br-desktop"> intuitive experiences',
       },
       p3: {
-        title: 'V<span class="italic-glyph">is</span>ual des<span class="italic-glyph">ig</span>n',
+        title: 'V<span class="italic-glyph">i</span>sual des<span class="italic-glyph">i</span>gn',
         desc: 'Creating interfaces with<br class="br-desktop"> a strong visual language',
       },
       p4: {
-        title: 'AI <span class="italic-glyph">&amp;</span> cr<span class="italic-glyph">eat</span>ive',
+        title: 'AI &amp; cre<span class="italic-glyph">a</span>tive',
         desc: 'Using AI to expand creative possibilities<br class="br-desktop"> and accelerate design',
       }
     },
@@ -248,7 +248,7 @@ const PORTFOLIO_I18N = {
     },
     services: {
       s1: {
-        title: 'Product & UX',
+        title: 'Pr<span class="italic-glyph">o</span>duct & UX',
         items: [
           'PRODUCT DISCOVERY',
           'USER FLOWS',
@@ -258,7 +258,7 @@ const PORTFOLIO_I18N = {
         ]
       },
       s2: {
-        title: 'Interface Design',
+        title: 'Interf<span class="italic-glyph">a</span>ce Des<span class="italic-glyph">i</span>gn',
         items: [
           'PRODUCT',
           'WEB',
@@ -267,7 +267,7 @@ const PORTFOLIO_I18N = {
         ]
       },
       s3: {
-        title: 'Visual Direction',
+        title: 'V<span class="italic-glyph">i</span>sual Dir<span class="italic-glyph">e</span>ction',
         items: [
           'ART DIRECTION',
           'VISUAL CONCEPTS',
@@ -292,7 +292,7 @@ const PORTFOLIO_I18N = {
       }
     },
     footer: {
-      heading: 'Let’s m<span class="italic-glyph">ak</span>e s<span class="italic-glyph">o</span>mething<br class="br-mobile"> work',
+      heading: 'Let’s m<span class="italic-glyph">a</span>ke s<span class="italic-glyph">o</span>mething<br class="br-mobile"> work',
       desc: 'From first idea to polished interface —<br class="br-desktop"> I design digital products with clarity,<br class="br-desktop"> purpose, and attention to detail',
     },
     articleLanding: {
