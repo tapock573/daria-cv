@@ -244,12 +244,6 @@
                     <img src="assets/mockup-1.png" alt="Кейс Metafora Branding" class="mockup-img" loading="lazy">
                   </picture>
                 </div>
-                <div class="project-card-pagination" aria-label="Проект 1 из 4">
-                  <span class="pagination-pip is-active" data-idx="0"></span>
-                  <span class="pagination-pip" data-idx="1"></span>
-                  <span class="pagination-pip" data-idx="2"></span>
-                  <span class="pagination-pip" data-idx="3"></span>
-                </div>
               </div>
             </article>
 
@@ -276,12 +270,6 @@
                     <source media="(max-width: 640px)" srcset="assets/UX360.png">
                     <img src="assets/mockup-2.png" alt="Кейс Stas Tretyak" class="mockup-img" loading="lazy">
                   </picture>
-                </div>
-                <div class="project-card-pagination" aria-label="Проект 2 из 4">
-                  <span class="pagination-pip" data-idx="0"></span>
-                  <span class="pagination-pip is-active" data-idx="1"></span>
-                  <span class="pagination-pip" data-idx="2"></span>
-                  <span class="pagination-pip" data-idx="3"></span>
                 </div>
               </div>
             </article>
@@ -311,12 +299,6 @@
                     <img src="assets/mockup-3.png" alt="Кейс Lab Views" class="mockup-img" loading="lazy">
                   </picture>
                 </div>
-                <div class="project-card-pagination" aria-label="Проект 3 из 4">
-                  <span class="pagination-pip" data-idx="0"></span>
-                  <span class="pagination-pip" data-idx="1"></span>
-                  <span class="pagination-pip is-active" data-idx="2"></span>
-                  <span class="pagination-pip" data-idx="3"></span>
-                </div>
               </div>
             </article>
 
@@ -344,12 +326,6 @@
                     <source media="(max-width: 1024px)" srcset="assets/AI_and_creative1024.png">
                     <img src="assets/mockup-4.png" alt="Кейс Dungeon Master" class="mockup-img" loading="lazy">
                   </picture>
-                </div>
-                <div class="project-card-pagination" aria-label="Проект 4 из 4">
-                  <span class="pagination-pip" data-idx="0"></span>
-                  <span class="pagination-pip" data-idx="1"></span>
-                  <span class="pagination-pip" data-idx="2"></span>
-                  <span class="pagination-pip is-active" data-idx="3"></span>
                 </div>
               </div>
             </article>
@@ -550,6 +526,9 @@
 
   <!-- ==================== ПОДВАЛ / FOOTER ==================== -->
   <footer class="site-footer" id="contacts">
+    <!-- WebGL Molten Amber Liquid Container (Footer rainbow mode) -->
+    <div id="footer-fluid" class="fluid-canvas-bg" data-fluid-rainbow="true"></div>
+
     <div class="container footer-container">
       
       <!-- Top: Footer Message (963px) -->
@@ -1032,24 +1011,22 @@
           nextDesc.classList.add('is-active');
         }
 
-        // 3. Animate Clients (Vivid Motion signature directional translation & soft bounce)
+        // 3. Animate Clients (Vivid Motion signature silky vertical glide)
         const prevClient = clients[prevIndex];
         const nextClient = clients[newIndex];
         if (window.gsap && prevClient && nextClient) {
           prevClient.classList.remove('is-active');
           gsap.to(prevClient, {
             autoAlpha: 0,
-            x: isDown ? -20 : 20,
-            y: isDown ? -6 : 6,
-            scale: 0.96,
-            duration: 0.32,
-            ease: 'power2.in',
+            y: isDown ? -18 : 18,
+            duration: 0.35,
+            ease: 'power2.inOut',
             overwrite: true
           });
           nextClient.classList.add('is-active');
           gsap.fromTo(nextClient,
-            { autoAlpha: 0, x: isDown ? 24 : -24, y: isDown ? 8 : -8, scale: 0.94 },
-            { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 0.48, ease: 'back.out(1.25)', overwrite: true }
+            { autoAlpha: 0, y: isDown ? 20 : -20 },
+            { autoAlpha: 1, y: 0, duration: 0.50, ease: 'power3.out', overwrite: true }
           );
         } else if (prevClient && nextClient) {
           prevClient.classList.remove('is-active');
@@ -1201,16 +1178,11 @@
         client.addEventListener('click', () => scrollToProject(i));
       });
 
-      // Allow clicking pagination pips on mobile / tablet to navigate
-      document.querySelectorAll('.project-card-pagination .pagination-pip').forEach(pip => {
-        pip.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const idx = parseInt(pip.getAttribute('data-idx'), 10);
-          if (!isNaN(idx)) scrollToProject(idx);
-        });
-      });
     })();
   </script>
+
+  <!-- Embedded project mockups base64 data to avoid CORS tainted-canvas restriction under file:/// protocol -->
+  <script src="assets/mockups-data.js"></script>
 
   <!-- WebGL Liquid Glitch & Chromatic Aberration Shader for Projects (Vivid Motion style) -->
   <script>
@@ -1223,58 +1195,80 @@
 
       const vsSource = `
         attribute vec2 a_position;
-        varying vec2 v_uv;
+        varying vec2 vUv;
         void main() {
-          v_uv = (a_position + 1.0) * 0.5;
-          v_uv.y = 1.0 - v_uv.y;
+          vUv = (a_position + 1.0) * 0.5;
           gl_Position = vec4(a_position, 0.0, 1.0);
         }
       `;
 
       const fsSource = `
-        precision mediump float;
-        uniform sampler2D u_image;
-        uniform vec2 u_mouse;
-        uniform float u_hover;
-        uniform float u_glitch;
-        uniform float u_time;
-        varying vec2 v_uv;
+        precision highp float;
+        uniform sampler2D uDataTexture;
+        uniform sampler2D uTexture;
+        uniform vec2      uMouse;
+        uniform float     uAberration;
+        uniform float     uImageAspect;
+        uniform float     uContainerAspect;
+        uniform vec2      uResolution;
+        uniform float     uBorderRadius;
+        uniform float     uOpacity;
+        uniform float     uZoom;
+        uniform float     uIsFloat;
+        varying vec2      vUv;
 
-        float hash(vec2 p) {
-          return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+        vec2 coverUV(vec2 uv) {
+          vec2 scale = uContainerAspect > uImageAspect
+            ? vec2(1.0, uImageAspect / uContainerAspect)
+            : vec2(uContainerAspect / uImageAspect, 1.0);
+          return 0.5 + (uv - 0.5) * scale;
+        }
+
+        float sdRoundBox(vec2 p, vec2 b, float r) {
+          vec2 q = abs(p) - b + r;
+          return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+        }
+
+        float hash21(vec2 p) {
+          return fract(52.9829189 * fract(dot(p, vec2(0.06711056, 0.00583715))));
         }
 
         void main() {
-          vec2 uv = v_uv;
-          
-          // Fluid distance from mouse
-          vec2 toMouse = uv - u_mouse;
-          float d = length(toMouse);
-          vec2 dir = d > 0.001 ? normalize(toMouse) : vec2(1.0, 0.0);
-          
-          // Liquid mouse displacement wave (Vivid Motion signature)
-          float wave = sin(d * 24.0 - u_time * 6.0) * exp(-d * 3.2) * 0.035 * u_hover;
-          
-          // Glitch slice distortion
-          float slice = floor(uv.y * 32.0);
-          float sliceNoise = hash(vec2(slice, floor(u_time * 12.0))) * 2.0 - 1.0;
-          float glitchBand = step(0.65, hash(vec2(slice * 1.5, floor(u_time * 8.0))));
-          vec2 glitchOffset = vec2(sliceNoise * 0.032 * glitchBand * u_glitch, 0.0);
-          
-          vec2 warp = uv + dir * wave + glitchOffset;
-          
-          // Chromatic aberration RGB split
-          float aber = (0.016 * u_hover + 0.032 * u_glitch);
-          vec2 rUv = warp + dir * aber * (1.0 + wave * 4.0);
-          vec2 gUv = warp;
-          vec2 bUv = warp - dir * aber * (1.0 + wave * 4.0);
-          
-          float r = texture2D(u_image, clamp(rUv, 0.0, 1.0)).r;
-          float g = texture2D(u_image, clamp(gUv, 0.0, 1.0)).g;
-          float b = texture2D(u_image, clamp(bUv, 0.0, 1.0)).b;
-          float a = texture2D(u_image, clamp(warp, 0.0, 1.0)).a;
-          
-          gl_FragColor = vec4(r, g, b, a);
+          float bStep = 1.5 / 64.0;
+          vec2 rawWarp =
+            texture2D(uDataTexture, vUv                  ).rg * 0.50  +
+            texture2D(uDataTexture, vUv + vec2( bStep, 0.)).rg * 0.125 +
+            texture2D(uDataTexture, vUv + vec2(-bStep, 0.)).rg * 0.125 +
+            texture2D(uDataTexture, vUv + vec2(0.,  bStep)).rg * 0.125 +
+            texture2D(uDataTexture, vUv + vec2(0., -bStep)).rg * 0.125;
+
+          if (uIsFloat < 0.5) {
+            rawWarp = (rawWarp - 0.5) * 20.0;
+          }
+
+          vec2  warp  = 0.018 * rawWarp;
+          float warpL = clamp(length(warp) * 7.5, 0.0, 1.0);
+          vec2 toMouse = vUv - uMouse;
+          vec2 aberDir = length(toMouse) > 0.001 ? normalize(toMouse) : vec2(1.0, 0.0);
+          vec2 uv = coverUV(vUv);
+          uv = 0.5 + (uv - 0.5) / uZoom;
+          float jitter = hash21(vUv) / 32.0;
+          vec3 col = vec3(0.0), weights = vec3(0.0);
+          for (int i = 0; i < 32; i++) {
+            float t   = clamp(float(i) / 31.0 + jitter, 0.0, 1.0);
+            vec2 sUV  = uv - warp + aberDir * uAberration * warpL * (t - 0.5);
+            vec3 sc   = texture2D(uTexture, clamp(sUV, 0.0, 1.0)).rgb;
+            float rW = exp(-pow((t - 0.0) * 2.5, 2.0));
+            float gW = exp(-pow((t - 0.5) * 2.5, 2.0));
+            float bW = exp(-pow((t - 1.0) * 2.5, 2.0));
+            col     += sc * vec3(rW, gW, bW);
+            weights += vec3(rW, gW, bW);
+          }
+          col /= weights;
+          vec2  pixCoord = (vUv - 0.5) * uResolution;
+          float sdf      = sdRoundBox(pixCoord, uResolution * 0.5, uBorderRadius);
+          float mask     = 1.0 - smoothstep(-1.0, 1.0, sdf);
+          gl_FragColor   = vec4(col, texture2D(uTexture, clamp(uv - warp, 0.0, 1.0)).a * mask * uOpacity);
         }
       `;
 
@@ -1285,19 +1279,37 @@
         return s;
       }
 
-      wraps.forEach(wrap => {
+      wraps.forEach((wrap, wrapIdx) => {
         const img = wrap.querySelector('img');
         if (!img) return;
 
-        let canvas, gl, prog, texture;
-        let uImageLoc, uMouseLoc, uHoverLoc, uGlitchLoc, uTimeLoc;
+        const GRID = 64;
+        const STRENGTH = 0.22;
+        const RELAXATION = 0.88;
+        const MOUSE_RADIUS = 0.18;
+        const ABERRATION = 0.20;
+
+        let canvas, gl, prog;
+        let uDataTexLoc, uTextureLoc, uMouseLoc, uAberrationLoc;
+        let uImageAspectLoc, uContainerAspectLoc, uResolutionLoc;
+        let uBorderRadiusLoc, uOpacityLoc, uZoomLoc, uIsFloatLoc;
+        let dataTexture, imageTexture;
+        let isFloatSupported = false;
+        let dataArray;
         let animId = null;
-        let isHovered = false;
-        let mouseX = 0.5, mouseY = 0.5;
-        let curMouseX = 0.5, curMouseY = 0.5;
-        let hoverVal = 0, glitchVal = 0;
-        let startTime = performance.now();
+        let active = false;
+        let cooldown = 0;
         let isTextureLoaded = false;
+        let imageAspect = 1.0;
+        let containerAspect = 1.0;
+        let borderRadius = 28.0;
+
+        const mouse = {
+          x: 0.5, y: 0.5,
+          prevX: 0.5, prevY: 0.5,
+          vX: 0, vY: 0,
+          moved: false
+        };
 
         function initGL() {
           try {
@@ -1305,9 +1317,13 @@
             canvas.className = 'project-glitch-canvas';
             wrap.appendChild(canvas);
 
-            gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false }) ||
-                 canvas.getContext('experimental-webgl', { alpha: true, antialias: false, depth: false });
+            gl = canvas.getContext('webgl', { alpha: true, antialias: false, depth: false, preserveDrawingBuffer: true }) ||
+                 canvas.getContext('experimental-webgl', { alpha: true, antialias: false, depth: false, preserveDrawingBuffer: true });
             if (!gl) return false;
+
+            const floatExt = gl.getExtension('OES_texture_float');
+            const floatLinearExt = gl.getExtension('OES_texture_float_linear');
+            isFloatSupported = !!floatExt;
 
             const vs = createShader(gl, gl.VERTEX_SHADER, vsSource);
             const fs = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
@@ -1321,38 +1337,92 @@
 
             const posBuf = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
             const posLoc = gl.getAttribLocation(prog, 'a_position');
             gl.enableVertexAttribArray(posLoc);
             gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
 
-            uImageLoc = gl.getUniformLocation(prog, 'u_image');
-            uMouseLoc = gl.getUniformLocation(prog, 'u_mouse');
-            uHoverLoc = gl.getUniformLocation(prog, 'u_hover');
-            uGlitchLoc = gl.getUniformLocation(prog, 'u_glitch');
-            uTimeLoc = gl.getUniformLocation(prog, 'u_time');
+            uTextureLoc = gl.getUniformLocation(prog, 'uTexture');
+            uDataTexLoc = gl.getUniformLocation(prog, 'uDataTexture');
+            uMouseLoc = gl.getUniformLocation(prog, 'uMouse');
+            uAberrationLoc = gl.getUniformLocation(prog, 'uAberration');
+            uImageAspectLoc = gl.getUniformLocation(prog, 'uImageAspect');
+            uContainerAspectLoc = gl.getUniformLocation(prog, 'uContainerAspect');
+            uResolutionLoc = gl.getUniformLocation(prog, 'uResolution');
+            uBorderRadiusLoc = gl.getUniformLocation(prog, 'uBorderRadius');
+            uOpacityLoc = gl.getUniformLocation(prog, 'uOpacity');
+            uZoomLoc = gl.getUniformLocation(prog, 'uZoom');
+            uIsFloatLoc = gl.getUniformLocation(prog, 'uIsFloat');
 
-            texture = gl.createTexture();
-            gl.bindTexture(gl.TEXTURE_2D, texture);
+            gl.uniform1i(uTextureLoc, 0);
+            gl.uniform1i(uDataTexLoc, 1);
+            gl.uniform1f(uAberrationLoc, ABERRATION);
+            gl.uniform1f(uOpacityLoc, 1.0);
+            gl.uniform1f(uZoomLoc, 1.0);
+            gl.uniform1f(uIsFloatLoc, isFloatSupported ? 1.0 : 0.0);
+
+            dataTexture = gl.createTexture();
+            gl.activeTexture(gl.TEXTURE1);
+            gl.bindTexture(gl.TEXTURE_2D, dataTexture);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, (isFloatSupported && floatLinearExt) ? gl.LINEAR : gl.NEAREST);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, (isFloatSupported && floatLinearExt) ? gl.LINEAR : gl.NEAREST);
+
+            if (isFloatSupported) {
+              dataArray = new Float32Array(4 * GRID * GRID);
+              gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, GRID, GRID, 0, gl.RGBA, gl.FLOAT, dataArray);
+            } else {
+              dataArray = new Uint8Array(4 * GRID * GRID);
+              for (let i = 0; i < GRID * GRID; i++) {
+                dataArray[4 * i] = 128;
+                dataArray[4 * i + 1] = 128;
+              }
+              gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, GRID, GRID, 0, gl.RGBA, gl.UNSIGNED_BYTE, dataArray);
+            }
+
+            imageTexture = gl.createTexture();
+            gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, imageTexture);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 
-            function upload() {
-              try {
-                gl.bindTexture(gl.TEXTURE_2D, texture);
-                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
-                isTextureLoaded = true;
-                resize();
-              } catch (e) {
-                if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+            function uploadImage() {
+              const dataSrc = (window.PROJECT_MOCKUPS && window.PROJECT_MOCKUPS[wrapIdx])
+                ? window.PROJECT_MOCKUPS[wrapIdx]
+                : (img.currentSrc || img.src);
+
+              const texImg = new Image();
+              texImg.crossOrigin = 'anonymous';
+              texImg.onload = function() {
+                try {
+                  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+                  gl.activeTexture(gl.TEXTURE0);
+                  gl.bindTexture(gl.TEXTURE_2D, imageTexture);
+                  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texImg);
+                  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+                  imageAspect = (texImg.naturalWidth || 1) / (texImg.naturalHeight || 1);
+                  isTextureLoaded = true;
+                  img.style.visibility = 'hidden';
+                  resize();
+                  renderFrame();
+                } catch (e) {
+                  console.warn('WebGL image upload fallback:', e);
+                  img.style.visibility = '';
+                }
+              };
+              texImg.onerror = function() {
+                img.style.visibility = '';
+              };
+              texImg.src = dataSrc;
+              if (texImg.complete && texImg.naturalWidth > 0) {
+                texImg.onload();
               }
             }
 
-            if (img.complete && img.naturalWidth > 0) upload();
-            else img.addEventListener('load', upload);
-
+            uploadImage();
             resize();
             return true;
           } catch (e) {
@@ -1372,73 +1442,153 @@
             canvas.height = h;
             gl.viewport(0, 0, w, h);
           }
+          containerAspect = rect.width / rect.height;
+          borderRadius = parseFloat(window.getComputedStyle(wrap).borderTopLeftRadius) || 28.0;
+          if (isTextureLoaded && !active) renderFrame();
         }
 
-        function render(now) {
-          if (!gl || !isTextureLoaded) {
-            animId = null;
-            return;
+        function updateSimulation() {
+          if (isFloatSupported) {
+            for (let P = 0; P < GRID * GRID; P++) {
+              dataArray[4 * P]     *= RELAXATION;
+              dataArray[4 * P + 1] *= RELAXATION;
+            }
+
+            const k = GRID * mouse.x;
+            const B = GRID * mouse.y;
+            const I = GRID * MOUSE_RADIUS;
+
+            for (let L = 0; L < GRID; L++) {
+              for (let O = 0; O < GRID; O++) {
+                const q = (k - L) * (k - L) + (B - O) * (B - O);
+                if (q < I * I) {
+                  const W = 4 * (L + GRID * O);
+                  const X = Math.min(I / Math.sqrt(q + 1e-4), 10);
+                  dataArray[W]     += 100 * STRENGTH * mouse.vX * X;
+                  dataArray[W + 1] += 100 * STRENGTH * mouse.vY * X;
+                }
+              }
+            }
+          } else {
+            for (let P = 0; P < GRID * GRID; P++) {
+              dataArray[4 * P]     = Math.round(128 + (dataArray[4 * P] - 128) * RELAXATION);
+              dataArray[4 * P + 1] = Math.round(128 + (dataArray[4 * P + 1] - 128) * RELAXATION);
+            }
+            const k = GRID * mouse.x;
+            const B = GRID * mouse.y;
+            const I = GRID * MOUSE_RADIUS;
+            for (let L = 0; L < GRID; L++) {
+              for (let O = 0; O < GRID; O++) {
+                const q = (k - L) * (k - L) + (B - O) * (B - O);
+                if (q < I * I) {
+                  const W = 4 * (L + GRID * O);
+                  const X = Math.min(I / Math.sqrt(q + 1e-4), 10);
+                  const curVx = (dataArray[W] - 128) / 10 + 100 * STRENGTH * mouse.vX * X;
+                  const curVy = (dataArray[W + 1] - 128) / 10 + 100 * STRENGTH * mouse.vY * X;
+                  dataArray[W]     = Math.max(0, Math.min(255, Math.round(128 + curVx * 10)));
+                  dataArray[W + 1] = Math.max(0, Math.min(255, Math.round(128 + curVy * 10)));
+                }
+              }
+            }
           }
 
-          curMouseX += (mouseX - curMouseX) * 0.12;
-          curMouseY += (mouseY - curMouseY) * 0.12;
-
-          const targetHover = isHovered ? 1 : 0;
-          hoverVal += (targetHover - hoverVal) * 0.14;
-          glitchVal *= 0.92;
-
-          if (!isHovered && hoverVal < 0.005 && glitchVal < 0.005) {
-            hoverVal = 0;
-            glitchVal = 0;
-            animId = null;
-            canvas.style.opacity = '0';
-            return;
+          if (!mouse.moved) {
+            mouse.vX *= 0.85;
+            mouse.vY *= 0.85;
           }
+          mouse.moved = false;
 
-          canvas.style.opacity = '1';
+          gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+          gl.activeTexture(gl.TEXTURE1);
+          gl.bindTexture(gl.TEXTURE_2D, dataTexture);
+          if (isFloatSupported) {
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, GRID, GRID, 0, gl.RGBA, gl.FLOAT, dataArray);
+          } else {
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, GRID, GRID, 0, gl.RGBA, gl.UNSIGNED_BYTE, dataArray);
+          }
+        }
 
+        function renderFrame() {
+          if (!gl || !isTextureLoaded) return;
+
+          const rect = wrap.getBoundingClientRect();
           gl.useProgram(prog);
-          gl.uniform2f(uMouseLoc, curMouseX, curMouseY);
-          gl.uniform1f(uHoverLoc, hoverVal);
-          gl.uniform1f(uGlitchLoc, glitchVal);
-          gl.uniform1f(uTimeLoc, (now - startTime) * 0.001);
+
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, imageTexture);
+          gl.activeTexture(gl.TEXTURE1);
+          gl.bindTexture(gl.TEXTURE_2D, dataTexture);
+
+          gl.uniform2f(uMouseLoc, mouse.x, mouse.y);
+          gl.uniform1f(uImageAspectLoc, imageAspect);
+          gl.uniform1f(uContainerAspectLoc, containerAspect);
+          gl.uniform2f(uResolutionLoc, rect.width || 1, rect.height || 1);
+          gl.uniform1f(uBorderRadiusLoc, borderRadius);
 
           gl.drawArrays(gl.TRIANGLES, 0, 6);
+        }
 
-          animId = requestAnimationFrame(render);
+        function tick() {
+          if (active) {
+            updateSimulation();
+            renderFrame();
+
+            cooldown--;
+            if (cooldown <= 0) {
+              active = false;
+              animId = null;
+              renderFrame();
+              return;
+            }
+            animId = requestAnimationFrame(tick);
+          } else {
+            animId = null;
+          }
         }
 
         function startLoop() {
           if (!animId) {
-            startTime = performance.now();
-            animId = requestAnimationFrame(render);
+            animId = requestAnimationFrame(tick);
           }
         }
 
         if (!initGL()) return;
 
         wrap.addEventListener('mouseenter', e => {
-          const card = wrap.closest('.project-card');
-          if (card && !card.classList.contains('is-active')) return;
-          isHovered = true;
-          glitchVal = 0.85;
           const rect = wrap.getBoundingClientRect();
-          mouseX = (e.clientX - rect.left) / rect.width;
-          mouseY = (e.clientY - rect.top) / rect.height;
-          curMouseX = mouseX;
-          curMouseY = mouseY;
+          const nx = (e.clientX - rect.left) / rect.width;
+          const ny = 1.0 - (e.clientY - rect.top) / rect.height;
+          mouse.x = nx;
+          mouse.y = ny;
+          mouse.prevX = nx;
+          mouse.prevY = ny;
+          mouse.vX = (Math.random() - 0.5) * 0.03;
+          mouse.vY = 0.0;
+          mouse.moved = true;
+          active = true;
+          cooldown = 90;
           startLoop();
         });
 
         wrap.addEventListener('mousemove', e => {
-          if (!isHovered) return;
           const rect = wrap.getBoundingClientRect();
-          mouseX = (e.clientX - rect.left) / rect.width;
-          mouseY = (e.clientY - rect.top) / rect.height;
+          const nx = (e.clientX - rect.left) / rect.width;
+          const ny = 1.0 - (e.clientY - rect.top) / rect.height;
+          const rx = nx - mouse.prevX;
+          const ry = ny - mouse.prevY;
+          mouse.vX += 0.6 * (rx - mouse.vX);
+          mouse.vY += 0.6 * (ry - mouse.vY);
+          mouse.prevX = mouse.x = nx;
+          mouse.prevY = mouse.y = ny;
+          mouse.moved = true;
+          active = true;
+          cooldown = 90;
+          startLoop();
         });
 
         wrap.addEventListener('mouseleave', () => {
-          isHovered = false;
+          mouse.vX = 0;
+          mouse.vY = 0;
         });
 
         window.addEventListener('resize', resize);

@@ -215,247 +215,247 @@
 
     // Shaders
     var baseVertexShader = compileShader(
-      gl.VERTEX_SHADER,
-      'precision highp float;' +
-      'attribute vec2 aPosition;' +
-      'varying vec2 vUv;' +
-      'varying vec2 vL;' +
-      'varying vec2 vR;' +
-      'varying vec2 vT;' +
-      'varying vec2 vB;' +
-      'uniform vec2 texelSize;' +
-      'void main () {' +
-      '  vUv = aPosition * 0.5 + 0.5;' +
-      '  vL = vUv - vec2(texelSize.x, 0.0);' +
-      '  vR = vUv + vec2(texelSize.x, 0.0);' +
-      '  vT = vUv + vec2(0.0, texelSize.y);' +
-      '  vB = vUv - vec2(0.0, texelSize.y);' +
-      '  gl_Position = vec4(aPosition, 0.0, 1.0);' +
-      '}'
+        gl.VERTEX_SHADER,
+        'precision highp float;' +
+        'attribute vec2 aPosition;' +
+        'varying vec2 vUv;' +
+        'varying vec2 vL;' +
+        'varying vec2 vR;' +
+        'varying vec2 vT;' +
+        'varying vec2 vB;' +
+        'uniform vec2 texelSize;' +
+        'void main () {' +
+        '  vUv = aPosition * 0.5 + 0.5;' +
+        '  vL = vUv - vec2(texelSize.x, 0.0);' +
+        '  vR = vUv + vec2(texelSize.x, 0.0);' +
+        '  vT = vUv + vec2(0.0, texelSize.y);' +
+        '  vB = vUv - vec2(0.0, texelSize.y);' +
+        '  gl_Position = vec4(aPosition, 0.0, 1.0);' +
+        '}'
     );
 
     var copyShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision mediump float;' +
-      'precision mediump sampler2D;' +
-      'varying highp vec2 vUv;' +
-      'uniform sampler2D uTexture;' +
-      'void main () {' +
-      '  gl_FragColor = texture2D(uTexture, vUv);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision mediump float;' +
+        'precision mediump sampler2D;' +
+        'varying highp vec2 vUv;' +
+        'uniform sampler2D uTexture;' +
+        'void main () {' +
+        '  gl_FragColor = texture2D(uTexture, vUv);' +
+        '}'
     );
 
     var clearShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision mediump float;' +
-      'precision mediump sampler2D;' +
-      'varying highp vec2 vUv;' +
-      'uniform sampler2D uTexture;' +
-      'uniform float value;' +
-      'void main () {' +
-      '  gl_FragColor = value * texture2D(uTexture, vUv);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision mediump float;' +
+        'precision mediump sampler2D;' +
+        'varying highp vec2 vUv;' +
+        'uniform sampler2D uTexture;' +
+        'uniform float value;' +
+        'void main () {' +
+        '  gl_FragColor = value * texture2D(uTexture, vUv);' +
+        '}'
     );
 
     var displayShaderSource =
-      'precision highp float;\n' +
-      'precision highp sampler2D;\n' +
-      'varying vec2 vUv;\n' +
-      'varying vec2 vL;\n' +
-      'varying vec2 vR;\n' +
-      'varying vec2 vT;\n' +
-      'varying vec2 vB;\n' +
-      'uniform sampler2D uTexture;\n' +
-      'uniform vec2 texelSize;\n' +
-      'void main () {\n' +
-      '  vec3 c = texture2D(uTexture, vUv).rgb;\n' +
-      '#ifdef SHADING\n' +
-      '  vec3 lc = texture2D(uTexture, vL).rgb;\n' +
-      '  vec3 rc = texture2D(uTexture, vR).rgb;\n' +
-      '  vec3 tc = texture2D(uTexture, vT).rgb;\n' +
-      '  vec3 bc = texture2D(uTexture, vB).rgb;\n' +
-      '  float dx = length(rc) - length(lc);\n' +
-      '  float dy = length(tc) - length(bc);\n' +
-      '  vec3 n = normalize(vec3(dx, dy, length(texelSize)));\n' +
-      '  vec3 l = vec3(0.0, 0.0, 1.0);\n' +
-      '  float diffuse = clamp(dot(n, l) + 0.7, 0.7, 1.0);\n' +
-      '  c *= diffuse;\n' +
-      '#endif\n' +
-      '  float a = max(c.r, max(c.g, c.b));\n' +
-      '  gl_FragColor = vec4(c, a);\n' +
-      '}\n';
+        'precision highp float;\n' +
+        'precision highp sampler2D;\n' +
+        'varying vec2 vUv;\n' +
+        'varying vec2 vL;\n' +
+        'varying vec2 vR;\n' +
+        'varying vec2 vT;\n' +
+        'varying vec2 vB;\n' +
+        'uniform sampler2D uTexture;\n' +
+        'uniform vec2 texelSize;\n' +
+        'void main () {\n' +
+        '  vec3 c = texture2D(uTexture, vUv).rgb;\n' +
+        '#ifdef SHADING\n' +
+        '  vec3 lc = texture2D(uTexture, vL).rgb;\n' +
+        '  vec3 rc = texture2D(uTexture, vR).rgb;\n' +
+        '  vec3 tc = texture2D(uTexture, vT).rgb;\n' +
+        '  vec3 bc = texture2D(uTexture, vB).rgb;\n' +
+        '  float dx = length(rc) - length(lc);\n' +
+        '  float dy = length(tc) - length(bc);\n' +
+        '  vec3 n = normalize(vec3(dx, dy, length(texelSize)));\n' +
+        '  vec3 l = vec3(0.0, 0.0, 1.0);\n' +
+        '  float diffuse = clamp(dot(n, l) + 0.7, 0.7, 1.0);\n' +
+        '  c *= diffuse;\n' +
+        '#endif\n' +
+        '  float a = max(c.r, max(c.g, c.b));\n' +
+        '  gl_FragColor = vec4(c, a);\n' +
+        '}\n';
 
     var splatShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision highp float;\n' +
-      'precision highp sampler2D;\n' +
-      'varying vec2 vUv;\n' +
-      'uniform sampler2D uTarget;\n' +
-      'uniform float aspectRatio;\n' +
-      'uniform vec3 color;\n' +
-      'uniform vec2 point;\n' +
-      'uniform float radius;\n' +
-      'void main () {\n' +
-      '  vec2 p = vUv - point.xy;\n' +
-      '  p.x *= aspectRatio;\n' +
-      '  vec3 splat = exp(-dot(p, p) / radius) * color;\n' +
-      '  vec3 base = texture2D(uTarget, vUv).xyz;\n' +
-      '  gl_FragColor = vec4(base + splat, 1.0);\n' +
-      '}\n'
+        gl.FRAGMENT_SHADER,
+        'precision highp float;\n' +
+        'precision highp sampler2D;\n' +
+        'varying vec2 vUv;\n' +
+        'uniform sampler2D uTarget;\n' +
+        'uniform float aspectRatio;\n' +
+        'uniform vec3 color;\n' +
+        'uniform vec2 point;\n' +
+        'uniform float radius;\n' +
+        'void main () {\n' +
+        '  vec2 p = vUv - point.xy;\n' +
+        '  p.x *= aspectRatio;\n' +
+        '  vec3 splat = exp(-dot(p, p) / radius) * color;\n' +
+        '  vec3 base = texture2D(uTarget, vUv).xyz;\n' +
+        '  gl_FragColor = vec4(base + splat, 1.0);\n' +
+        '}\n'
     );
 
     var advectionShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision highp float;\n' +
-      'precision highp sampler2D;\n' +
-      'varying vec2 vUv;\n' +
-      'uniform sampler2D uVelocity;\n' +
-      'uniform sampler2D uSource;\n' +
-      'uniform vec2 texelSize;\n' +
-      'uniform vec2 dyeTexelSize;\n' +
-      'uniform float dt;\n' +
-      'uniform float dissipation;\n' +
-      'vec4 bilerp (sampler2D sam, vec2 uv, vec2 tsize) {\n' +
-      '  vec2 st = uv / tsize - 0.5;\n' +
-      '  vec2 iuv = floor(st);\n' +
-      '  vec2 fuv = fract(st);\n' +
-      '  vec4 a = texture2D(sam, (iuv + vec2(0.5, 0.5)) * tsize);\n' +
-      '  vec4 b = texture2D(sam, (iuv + vec2(1.5, 0.5)) * tsize);\n' +
-      '  vec4 c = texture2D(sam, (iuv + vec2(0.5, 1.5)) * tsize);\n' +
-      '  vec4 d = texture2D(sam, (iuv + vec2(1.5, 1.5)) * tsize);\n' +
-      '  return mix(mix(a, b, fuv.x), mix(c, d, fuv.x), fuv.y);\n' +
-      '}\n' +
-      'void main () {\n' +
-      '#ifdef MANUAL_FILTERING\n' +
-      '  vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;\n' +
-      '  vec4 result = bilerp(uSource, coord, dyeTexelSize);\n' +
-      '#else\n' +
-      '  vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;\n' +
-      '  vec4 result = texture2D(uSource, coord);\n' +
-      '#endif\n' +
-      '  float decay = 1.0 + dissipation * dt;\n' +
-      '  gl_FragColor = result / decay;\n' +
-      '}\n',
-      supportLinearFiltering ? null : ['MANUAL_FILTERING']
+        gl.FRAGMENT_SHADER,
+        'precision highp float;\n' +
+        'precision highp sampler2D;\n' +
+        'varying vec2 vUv;\n' +
+        'uniform sampler2D uVelocity;\n' +
+        'uniform sampler2D uSource;\n' +
+        'uniform vec2 texelSize;\n' +
+        'uniform vec2 dyeTexelSize;\n' +
+        'uniform float dt;\n' +
+        'uniform float dissipation;\n' +
+        'vec4 bilerp (sampler2D sam, vec2 uv, vec2 tsize) {\n' +
+        '  vec2 st = uv / tsize - 0.5;\n' +
+        '  vec2 iuv = floor(st);\n' +
+        '  vec2 fuv = fract(st);\n' +
+        '  vec4 a = texture2D(sam, (iuv + vec2(0.5, 0.5)) * tsize);\n' +
+        '  vec4 b = texture2D(sam, (iuv + vec2(1.5, 0.5)) * tsize);\n' +
+        '  vec4 c = texture2D(sam, (iuv + vec2(0.5, 1.5)) * tsize);\n' +
+        '  vec4 d = texture2D(sam, (iuv + vec2(1.5, 1.5)) * tsize);\n' +
+        '  return mix(mix(a, b, fuv.x), mix(c, d, fuv.x), fuv.y);\n' +
+        '}\n' +
+        'void main () {\n' +
+        '#ifdef MANUAL_FILTERING\n' +
+        '  vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;\n' +
+        '  vec4 result = bilerp(uSource, coord, dyeTexelSize);\n' +
+        '#else\n' +
+        '  vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;\n' +
+        '  vec4 result = texture2D(uSource, coord);\n' +
+        '#endif\n' +
+        '  float decay = 1.0 + dissipation * dt;\n' +
+        '  gl_FragColor = result / decay;\n' +
+        '}\n',
+        supportLinearFiltering ? null : ['MANUAL_FILTERING']
     );
 
     var divergenceShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision mediump float;' +
-      'precision mediump sampler2D;' +
-      'varying highp vec2 vUv;' +
-      'varying highp vec2 vL;' +
-      'varying highp vec2 vR;' +
-      'varying highp vec2 vT;' +
-      'varying highp vec2 vB;' +
-      'uniform sampler2D uVelocity;' +
-      'void main () {' +
-      '  float L = texture2D(uVelocity, vL).x;' +
-      '  float R = texture2D(uVelocity, vR).x;' +
-      '  float T = texture2D(uVelocity, vT).y;' +
-      '  float B = texture2D(uVelocity, vB).y;' +
-      '  vec2 C = texture2D(uVelocity, vUv).xy;' +
-      '  if (vL.x < 0.0) { L = -C.x; }' +
-      '  if (vR.x > 1.0) { R = -C.x; }' +
-      '  if (vT.y > 1.0) { T = -C.y; }' +
-      '  if (vB.y < 0.0) { B = -C.y; }' +
-      '  float div = 0.5 * (R - L + T - B);' +
-      '  gl_FragColor = vec4(div, 0.0, 0.0, 1.0);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision mediump float;' +
+        'precision mediump sampler2D;' +
+        'varying highp vec2 vUv;' +
+        'varying highp vec2 vL;' +
+        'varying highp vec2 vR;' +
+        'varying highp vec2 vT;' +
+        'varying highp vec2 vB;' +
+        'uniform sampler2D uVelocity;' +
+        'void main () {' +
+        '  float L = texture2D(uVelocity, vL).x;' +
+        '  float R = texture2D(uVelocity, vR).x;' +
+        '  float T = texture2D(uVelocity, vT).y;' +
+        '  float B = texture2D(uVelocity, vB).y;' +
+        '  vec2 C = texture2D(uVelocity, vUv).xy;' +
+        '  if (vL.x < 0.0) { L = -C.x; }' +
+        '  if (vR.x > 1.0) { R = -C.x; }' +
+        '  if (vT.y > 1.0) { T = -C.y; }' +
+        '  if (vB.y < 0.0) { B = -C.y; }' +
+        '  float div = 0.5 * (R - L + T - B);' +
+        '  gl_FragColor = vec4(div, 0.0, 0.0, 1.0);' +
+        '}'
     );
 
     var curlShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision mediump float;' +
-      'precision mediump sampler2D;' +
-      'varying highp vec2 vUv;' +
-      'varying highp vec2 vL;' +
-      'varying highp vec2 vR;' +
-      'varying highp vec2 vT;' +
-      'varying highp vec2 vB;' +
-      'uniform sampler2D uVelocity;' +
-      'void main () {' +
-      '  float L = texture2D(uVelocity, vL).y;' +
-      '  float R = texture2D(uVelocity, vR).y;' +
-      '  float T = texture2D(uVelocity, vT).x;' +
-      '  float B = texture2D(uVelocity, vB).x;' +
-      '  float vorticity = R - L - T + B;' +
-      '  gl_FragColor = vec4(0.5 * vorticity, 0.0, 0.0, 1.0);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision mediump float;' +
+        'precision mediump sampler2D;' +
+        'varying highp vec2 vUv;' +
+        'varying highp vec2 vL;' +
+        'varying highp vec2 vR;' +
+        'varying highp vec2 vT;' +
+        'varying highp vec2 vB;' +
+        'uniform sampler2D uVelocity;' +
+        'void main () {' +
+        '  float L = texture2D(uVelocity, vL).y;' +
+        '  float R = texture2D(uVelocity, vR).y;' +
+        '  float T = texture2D(uVelocity, vT).x;' +
+        '  float B = texture2D(uVelocity, vB).x;' +
+        '  float vorticity = R - L - T + B;' +
+        '  gl_FragColor = vec4(0.5 * vorticity, 0.0, 0.0, 1.0);' +
+        '}'
     );
 
     var vorticityShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision highp float;' +
-      'precision highp sampler2D;' +
-      'varying vec2 vUv;' +
-      'varying vec2 vL;' +
-      'varying vec2 vR;' +
-      'varying vec2 vT;' +
-      'varying vec2 vB;' +
-      'uniform sampler2D uVelocity;' +
-      'uniform sampler2D uCurl;' +
-      'uniform float curl;' +
-      'uniform float dt;' +
-      'void main () {' +
-      '  float L = texture2D(uCurl, vL).x;' +
-      '  float R = texture2D(uCurl, vR).x;' +
-      '  float T = texture2D(uCurl, vT).x;' +
-      '  float B = texture2D(uCurl, vB).x;' +
-      '  float C = texture2D(uCurl, vUv).x;' +
-      '  vec2 force = 0.5 * vec2(abs(T) - abs(B), abs(R) - abs(L));' +
-      '  force /= length(force) + 0.0001;' +
-      '  force *= curl * C;' +
-      '  force.y *= -1.0;' +
-      '  vec2 velocity = texture2D(uVelocity, vUv).xy;' +
-      '  velocity += force * dt;' +
-      '  velocity = min(max(velocity, -1000.0), 1000.0);' +
-      '  gl_FragColor = vec4(velocity, 0.0, 1.0);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision highp float;' +
+        'precision highp sampler2D;' +
+        'varying vec2 vUv;' +
+        'varying vec2 vL;' +
+        'varying vec2 vR;' +
+        'varying vec2 vT;' +
+        'varying vec2 vB;' +
+        'uniform sampler2D uVelocity;' +
+        'uniform sampler2D uCurl;' +
+        'uniform float curl;' +
+        'uniform float dt;' +
+        'void main () {' +
+        '  float L = texture2D(uCurl, vL).x;' +
+        '  float R = texture2D(uCurl, vR).x;' +
+        '  float T = texture2D(uCurl, vT).x;' +
+        '  float B = texture2D(uCurl, vB).x;' +
+        '  float C = texture2D(uCurl, vUv).x;' +
+        '  vec2 force = 0.5 * vec2(abs(T) - abs(B), abs(R) - abs(L));' +
+        '  force /= length(force) + 0.0001;' +
+        '  force *= curl * C;' +
+        '  force.y *= -1.0;' +
+        '  vec2 velocity = texture2D(uVelocity, vUv).xy;' +
+        '  velocity += force * dt;' +
+        '  velocity = min(max(velocity, -1000.0), 1000.0);' +
+        '  gl_FragColor = vec4(velocity, 0.0, 1.0);' +
+        '}'
     );
 
     var pressureShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision mediump float;' +
-      'precision mediump sampler2D;' +
-      'varying highp vec2 vUv;' +
-      'varying highp vec2 vL;' +
-      'varying highp vec2 vR;' +
-      'varying highp vec2 vT;' +
-      'varying highp vec2 vB;' +
-      'uniform sampler2D uPressure;' +
-      'uniform sampler2D uDivergence;' +
-      'void main () {' +
-      '  float L = texture2D(uPressure, vL).x;' +
-      '  float R = texture2D(uPressure, vR).x;' +
-      '  float T = texture2D(uPressure, vT).x;' +
-      '  float B = texture2D(uPressure, vB).x;' +
-      '  float divergence = texture2D(uDivergence, vUv).x;' +
-      '  float pressure = (L + R + B + T - divergence) * 0.25;' +
-      '  gl_FragColor = vec4(pressure, 0.0, 0.0, 1.0);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision mediump float;' +
+        'precision mediump sampler2D;' +
+        'varying highp vec2 vUv;' +
+        'varying highp vec2 vL;' +
+        'varying highp vec2 vR;' +
+        'varying highp vec2 vT;' +
+        'varying highp vec2 vB;' +
+        'uniform sampler2D uPressure;' +
+        'uniform sampler2D uDivergence;' +
+        'void main () {' +
+        '  float L = texture2D(uPressure, vL).x;' +
+        '  float R = texture2D(uPressure, vR).x;' +
+        '  float T = texture2D(uPressure, vT).x;' +
+        '  float B = texture2D(uPressure, vB).x;' +
+        '  float divergence = texture2D(uDivergence, vUv).x;' +
+        '  float pressure = (L + R + B + T - divergence) * 0.25;' +
+        '  gl_FragColor = vec4(pressure, 0.0, 0.0, 1.0);' +
+        '}'
     );
 
     var gradientSubtractShader = compileShader(
-      gl.FRAGMENT_SHADER,
-      'precision mediump float;' +
-      'precision mediump sampler2D;' +
-      'varying highp vec2 vUv;' +
-      'varying highp vec2 vL;' +
-      'varying highp vec2 vR;' +
-      'varying highp vec2 vT;' +
-      'varying highp vec2 vB;' +
-      'uniform sampler2D uPressure;' +
-      'uniform sampler2D uVelocity;' +
-      'void main () {' +
-      '  float L = texture2D(uPressure, vL).x;' +
-      '  float R = texture2D(uPressure, vR).x;' +
-      '  float T = texture2D(uPressure, vT).x;' +
-      '  float B = texture2D(uPressure, vB).x;' +
-      '  vec2 velocity = texture2D(uVelocity, vUv).xy;' +
-      '  velocity.xy -= vec2(R - L, T - B);' +
-      '  gl_FragColor = vec4(velocity, 0.0, 1.0);' +
-      '}'
+        gl.FRAGMENT_SHADER,
+        'precision mediump float;' +
+        'precision mediump sampler2D;' +
+        'varying highp vec2 vUv;' +
+        'varying highp vec2 vL;' +
+        'varying highp vec2 vR;' +
+        'varying highp vec2 vT;' +
+        'varying highp vec2 vB;' +
+        'uniform sampler2D uPressure;' +
+        'uniform sampler2D uVelocity;' +
+        'void main () {' +
+        '  float L = texture2D(uPressure, vL).x;' +
+        '  float R = texture2D(uPressure, vR).x;' +
+        '  float T = texture2D(uPressure, vT).x;' +
+        '  float B = texture2D(uPressure, vB).x;' +
+        '  vec2 velocity = texture2D(uVelocity, vUv).xy;' +
+        '  velocity.xy -= vec2(R - L, T - B);' +
+        '  gl_FragColor = vec4(velocity, 0.0, 1.0);' +
+        '}'
     );
 
     // Full-screen Quad Buffer
@@ -905,7 +905,7 @@
     function getContainerCoords(clientX, clientY) {
       var rect = container.getBoundingClientRect();
       var inside = clientX >= rect.left && clientX <= rect.right &&
-                     clientY >= rect.top && clientY <= rect.bottom;
+          clientY >= rect.top && clientY <= rect.bottom;
       var dpr = Math.min(window.devicePixelRatio || 1, 2.0);
       var posX = (clientX - rect.left) * dpr;
       var posY = (clientY - rect.top) * dpr;
@@ -921,19 +921,28 @@
       clickSplat(pointer);
     }
 
-    var firstMove = false;
+    var wasInside = false;
     function handleMouseMove(e) {
       var pt = getContainerCoords(e.clientX, e.clientY);
-      if (!pt.inside) return;
+      if (!pt.inside) {
+        wasInside = false;
+        return;
+      }
       lastInteraction = Date.now();
       var pointer = pointers[0];
-      if (!firstMove) {
-        var col = generateColor();
-        updatePointerMoveData(pointer, pt.posX, pt.posY, col);
-        firstMove = true;
-      } else {
-        updatePointerMoveData(pointer, pt.posX, pt.posY, pointer.color);
+      if (!wasInside) {
+        wasInside = true;
+        pointer.texcoordX = pt.posX / canvas.width;
+        pointer.texcoordY = 1.0 - pt.posY / canvas.height;
+        pointer.prevTexcoordX = pointer.texcoordX;
+        pointer.prevTexcoordY = pointer.texcoordY;
+        pointer.deltaX = 0;
+        pointer.deltaY = 0;
+        pointer.moved = false;
+        pointer.color = generateColor();
+        return;
       }
+      updatePointerMoveData(pointer, pt.posX, pt.posY, pointer.color);
     }
 
     function handleTouchStart(e) {
@@ -969,7 +978,12 @@
 
     // IntersectionObserver to suspend simulation when container is scrolled out
     var io = new IntersectionObserver(function (entries) {
+      var wasVis = isVisible;
       isVisible = entries[0].isIntersecting && entries[0].intersectionRatio > 0;
+      if (isVisible && !wasVis) {
+        lastInteraction = Date.now();
+        lastUpdateTime = Date.now();
+      }
     }, { threshold: [0, 0.05, 0.2] });
     io.observe(container);
 
@@ -1022,6 +1036,18 @@
     var heroEl = document.querySelector('#hero-fluid');
     if (heroEl) {
       window.heroSplash = createSplashCursor(heroEl);
+    }
+    var footerEl = document.querySelector('#footer-fluid');
+    if (footerEl) {
+      if (heroEl) {
+        if (!footerEl.dataset.fluidColor && heroEl.dataset.fluidColor) {
+          footerEl.dataset.fluidColor = heroEl.dataset.fluidColor;
+        }
+        if (footerEl.dataset.fluidRainbow === undefined && heroEl.dataset.fluidRainbow !== undefined) {
+          footerEl.dataset.fluidRainbow = heroEl.dataset.fluidRainbow;
+        }
+      }
+      window.footerSplash = createSplashCursor(footerEl);
     }
   }
 

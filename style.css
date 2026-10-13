@@ -876,6 +876,7 @@ main {
   min-height: 56px;
   height: 56px;
   width: 100%;
+  overflow: hidden;
 }
 
 .projects-clients-track .client-badge {
@@ -1022,8 +1023,7 @@ main {
   height: 100%;
   border-radius: inherit;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  opacity: 1;
   z-index: 2;
 }
 
@@ -1031,10 +1031,9 @@ main {
   .project-glitch-canvas {
     display: none !important;
   }
-}
-
-.project-card-pagination {
-  display: none;
+  .mockup-img {
+    visibility: visible !important;
+  }
 }
 
 /* Active & Inactive card interaction (Vivid Motion style) */
@@ -1442,10 +1441,6 @@ main {
   flex-direction: column;
   justify-content: flex-end;
   background-color: var(--color-bg);
-  background-image: url('assets/hero-bg.png');
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: cover;
 }
 
 /* Footer top fade overlay — медленный и мягкий переход из чёрного в градиент */
@@ -1455,7 +1450,8 @@ main {
   top: 0;
   left: 0;
   right: 0;
-  height: 480px;
+  height: 380px;
+  max-height: 45%;
   background: linear-gradient(
     to bottom,
     var(--color-bg) 0%,
@@ -2236,44 +2232,6 @@ main {
     border-radius: 12px;
   }
 
-  .project-card-pagination {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 46px;
-    height: 4px;
-    margin-top: 24px;
-  }
-
-  .pagination-pip {
-    position: relative;
-    display: block;
-    height: 4px;
-    width: 4px;
-    background: #ffffff;
-    opacity: 0.3;
-    border-radius: 1px;
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    cursor: pointer;
-  }
-
-  .pagination-pip::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    bottom: -10px;
-    left: -4px;
-    right: -4px;
-  }
-
-  .pagination-pip.is-active {
-    width: 16px;
-    opacity: 1;
-    border-radius: 1px;
-  }
-
 
   .about-section {
     padding: 80px 0 0;
@@ -2717,10 +2675,6 @@ main {
     border-radius: 12px;
   }
 
-  .project-card-pagination {
-    margin-top: 20px;
-  }
-
 
   .about-section {
     padding: 80px 0 0;
@@ -3032,6 +2986,7 @@ main {
   padding-left: 18px;
   border-left: 2px solid transparent;
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .toc-link:hover {

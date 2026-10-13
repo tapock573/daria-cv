@@ -40,7 +40,7 @@
             </a>
           </li>
           <li>
-            <a href="index.html#notes" class="nav-link active">
+            <a href="index.html#notes" class="nav-link">
               <span class="nav-link-track">
                 <span class="nav-link-text">NOTES</span>
                 <span class="nav-link-text" aria-hidden="true">NOTES</span>
@@ -158,7 +158,7 @@
           <nav class="toc-nav">
             <ul class="toc-list">
               <li class="toc-item">
-                <a href="#sec-before-first-screen" class="toc-link is-active" data-i18n="articleLanding.toc.s1">Всё начинается до первого экрана</a>
+                <a href="#sec-before-first-screen" class="toc-link" data-i18n="articleLanding.toc.s1">Всё начинается до первого экрана</a>
               </li>
               <li class="toc-item">
                 <a href="#sec-first-screen-offer" class="toc-link" data-i18n="articleLanding.toc.s2">Первый экран должен быстро дать оффер</a>
@@ -332,8 +332,11 @@
     </div>
   </main>
 
-  <!-- ==================== ПОДВАЛ / FOOTER (СКОПИРОВАН С ПЕРВОЙ СТРАНИЦЫ) ==================== -->
-  <footer class="site-footer" id="contacts">
+  <!-- ==================== ПОДВАЛ / FOOTER ==================== -->
+  <footer class="site-footer site-footer--article" id="contacts">
+    <!-- WebGL Fluid Container (Article specific color: #EF4444) -->
+    <div id="footer-fluid" class="fluid-canvas-bg" data-fluid-color="#EF4444" data-fluid-rainbow="false"></div>
+
     <div class="container footer-container">
       
       <!-- Top: Footer Message (963px) -->
@@ -396,19 +399,30 @@
               header.classList.remove('header--scrolled');
             }
 
-            const delta = currentScrollY - lastScrollY;
-            if (Math.abs(delta) > 4) {
-              if (delta > 0 && currentScrollY > 100) {
-                header.classList.add('header--hidden');
-              } else if (delta < 0) {
-                header.classList.remove('header--hidden');
+            if (currentScrollY <= 80) {
+              header.classList.remove('header--hidden');
+            } else {
+              const delta = currentScrollY - lastScrollY;
+              if (Math.abs(delta) > 4) {
+                if (delta > 0 && currentScrollY > 100) {
+                  header.classList.add('header--hidden');
+                } else if (delta < 0) {
+                  header.classList.remove('header--hidden');
+                }
+                lastScrollY = Math.max(0, currentScrollY);
               }
-              lastScrollY = Math.max(0, currentScrollY);
             }
 
             ticking = false;
           });
           ticking = true;
+        }
+      }, { passive: true });
+
+      // Reveal header when mouse approaches top bar
+      window.addEventListener('mousemove', function(e) {
+        if (e.clientY < 70) {
+          header.classList.remove('header--hidden');
         }
       }, { passive: true });
     })();
@@ -488,37 +502,47 @@
         return { link, el: document.querySelector(id) };
       }).filter(item => item.el !== null);
 
+      let isClickScrolling = false;
+      let clickTimeout = null;
+
       function updateActiveToc() {
+        if (isClickScrolling) return;
+
         const scrollY = window.pageYOffset || document.documentElement.scrollTop;
         const windowH = window.innerHeight;
         const bodyH = document.documentElement.scrollHeight;
 
         // Bottom of page: activate Sources
-        if (scrollY + windowH >= bodyH - 120) {
+        if (scrollY + windowH >= bodyH - 100) {
           tocLinks.forEach(l => l.classList.remove('is-active'));
           const last = tocLinks[tocLinks.length - 1];
-          if (last) last.classList.add('is-active');
+          if (last) {
+            last.classList.add('is-active');
+          }
           return;
         }
 
-        const checkPos = scrollY + 180;
+        // Trigger active section when its heading reaches the middle of the screen (50% viewport height)
+        const triggerPoint = windowH * 0.5;
         let current = null;
 
-        for (let i = sections.length - 1; i >= 0; i--) {
+        for (let i = 0; i < sections.length; i++) {
           const { link, el } = sections[i];
-          if (checkPos >= el.offsetTop) {
+          const heading = el.querySelector('.article-sec-title, .sources-title') || el;
+          const rect = heading.getBoundingClientRect();
+          if (rect.top <= triggerPoint) {
             current = link;
+          } else {
             break;
           }
         }
 
-        if (!current && sections.length > 0) {
-          current = sections[0].link;
-        }
-
         tocLinks.forEach(l => {
-          if (l === current) l.classList.add('is-active');
-          else l.classList.remove('is-active');
+          if (l === current) {
+            l.classList.add('is-active');
+          } else {
+            l.classList.remove('is-active');
+          }
         });
       }
 
@@ -535,14 +559,62 @@
           if (!target) return;
           e.preventDefault();
 
-          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
+          isClickScrolling = true;
+          clearTimeout(clickTimeout);
+
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          this.classList.add('is-active');
+
+          const header = document.querySelector('.site-header');
+          if (header) header.classList.remove('header--hidden');
+
+          const headerHeight = header?.offsetHeight || 70;
+          const targetY = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 24;
+
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: 'smooth'
+          });
+
+          try {
+            history.pushState(null, null, href);
+          } catch (err) {}
+
+          let scrollEndTimer = null;
+          function finishClickScroll() {
+            window.removeEventListener('scroll', onScrollActivity);
+            isClickScrolling = false;
+            updateActiveToc();
+          }
+          function onScrollActivity() {
+            clearTimeout(scrollEndTimer);
+            scrollEndTimer = setTimeout(finishClickScroll, 120);
+          }
+          window.addEventListener('scroll', onScrollActivity, { passive: true });
+          clickTimeout = setTimeout(finishClickScroll, 1100);
+        });
+      });
+
+      // Smooth scroll for in-page anchors (#contacts, #source-8)
+      document.querySelectorAll('a[href^="#"]:not(.toc-link)').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 70;
           const targetY = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
           window.scrollTo({
             top: Math.max(0, targetY),
             behavior: 'smooth'
           });
-          history.pushState(null, null, href);
+
+          try {
+            history.pushState(null, null, href);
+          } catch (err) {}
         });
       });
     })();
